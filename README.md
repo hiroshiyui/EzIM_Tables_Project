@@ -4,11 +4,11 @@
 
 ## 使用方式
 
-教育部辭典與輕鬆輸入法原始編碼表皆以壓縮檔形式收錄，執行前請先解壓縮：
+教育部辭典與輕鬆輸入法原始編碼表皆以壓縮檔形式收錄，執行前請先解壓縮。注意 `ezsource12-3.zip` 內部並無 `ezsource12-3/` 頂層目錄，需透過 `-d` 指定解壓縮目標目錄：
 
 ```sh
 unzip dict_concised_2014_20260325.zip
-unzip ezsource12-3.zip
+unzip -d ezsource12-3 ezsource12-3.zip
 bundle install
 bundle exec ruby build_dict.rb
 ```
