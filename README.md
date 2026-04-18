@@ -41,19 +41,37 @@ bundle exec ruby build_dict.rb
 
 目前自 45,131 筆字詞中：
 
-- 直接對映：39,580
-- 規則推導：5,532
-- 查無對映：19（多為罕用異體字，如 礴、疱、肽、酶）
+- 直接對映：**45,131**
+- 規則推導：0
+- 查無對映：0
+
+> 起初僅 39,580 筆有直接對映、5,532 筆需規則推導、19 筆完全查無對映。經過下列補強後達成 100% 直接對映：
+>
+> - 補入 11 個原始編碼表缺漏的單字（礴、疱、酶、髴、肽、䠷、擀、焿、彞、吔、〇、浜），推理過程與規則整理於 [`CLAUDE.md`](CLAUDE.md) 之「缺漏字元編碼推理規則」一節。
+> - 將原本由 `build_dict.rb` 規則推導出的 5,541 組詞組編碼，透過 `sync_ezbig.rb` 寫回 `ezbig.orig-utf8.txt`。
 
 ## 檔案
 
-- `build_dict.rb` — 主要建構腳本
-- `CLAUDE.md` — 取碼規則
+- `build_dict.rb` — 主要建構腳本：讀取 xlsx 與兩個原始編碼表，產出 `dict.csv`
+- `sync_ezbig.rb` — 維護腳本：將 `dict.csv` 中規則推導出的編碼寫回 `ezbig.orig-utf8.txt`
+- `sort_tables.rb` — 維護腳本：依編碼穩定排序 `ez.orig-utf8.txt` 與 `ezbig.orig-utf8.txt`（保留同碼字元的原始順序）
+- `CLAUDE.md` — 取碼規則與缺漏字元推理規則
 - `Gemfile` / `Gemfile.lock` — 依賴（`roo` 讀取 xlsx）
 - `.ruby-version` / `.ruby-gemset` — rvm 設定
 - `dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `dict_concised_2014_20260325.xlsx` 後使用）
 - `ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `ezsource12-3/` 後使用）
 - `ezphrase.txt` / `gpl.txt` — 輕鬆輸入法大詞庫授權文件
+
+## 維護工作流程
+
+當教育部辭典更新或發現新的缺漏字元時，可依下列流程重整資料：
+
+1. 重跑 `bundle exec ruby build_dict.rb`，檢視 `dict.csv` 第三欄（規則推導）與第四欄（查無對映）。
+2. 對於查無對映的字元，依 [`CLAUDE.md`](CLAUDE.md) 的推理流程補入 `ezsource12-3/origtable/ez.orig-utf8.txt`。
+3. 重跑 `bundle exec ruby build_dict.rb` 確認無未解項。
+4. 執行 `bundle exec ruby sync_ezbig.rb` 將推導結果寫回 `ezbig.orig-utf8.txt`。
+5. （可選）執行 `bundle exec ruby sort_tables.rb` 重新分組同碼字元。
+6. 將更新後的兩個原始編碼表重新打包進 `ezsource12-3.zip`：`(cd ezsource12-3 && zip ../ezsource12-3.zip origtable/ez.orig-utf8.txt origtable/ezbig.orig-utf8.txt)`
 
 ## 授權與版權
 
@@ -84,4 +102,4 @@ bundle exec ruby build_dict.rb
 
 ### 本專案之整理成果
 
-`build_dict.rb` 與衍生之 `dict.csv` 同樣以 GNU GPL v2（或更新版本）授權發佈，以與輕鬆輸入法大詞庫之授權相容。
+`build_dict.rb`、`sync_ezbig.rb`、`sort_tables.rb` 與衍生之 `dict.csv` 同樣以 GNU GPL v2（或更新版本）授權發佈，以與輕鬆輸入法大詞庫之授權相容。
