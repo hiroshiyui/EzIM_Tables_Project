@@ -4,9 +4,10 @@
 
 ## 使用方式
 
-輕鬆輸入法原始編碼表收錄於 `ezsource12-3.zip`，執行前請先解壓縮為 `ezsource12-3/` 目錄：
+教育部辭典與輕鬆輸入法原始編碼表皆以壓縮檔形式收錄，執行前請先解壓縮：
 
 ```sh
+unzip dict_concised_2014_20260325.zip
 unzip ezsource12-3.zip
 bundle install
 bundle exec ruby build_dict.rb
@@ -50,6 +51,7 @@ bundle exec ruby build_dict.rb
 - `CLAUDE.md` — 取碼規則
 - `Gemfile` / `Gemfile.lock` — 依賴（`roo` 讀取 xlsx）
 - `.ruby-version` / `.ruby-gemset` — rvm 設定
+- `dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `dict_concised_2014_20260325.xlsx` 後使用）
 - `ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `ezsource12-3/` 後使用）
 - `ezphrase.txt` / `gpl.txt` — 輕鬆輸入法大詞庫授權文件
 
