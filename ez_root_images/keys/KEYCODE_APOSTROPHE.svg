@@ -11,14 +11,15 @@
      id="defs4" />
   <style
      id="style1">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-.key rect { fill: none; stroke: none; }
-.corner-label {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+.key-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
   font-weight: 700;
-  font-size: 12px;
-  fill: #333;
-  dominant-baseline: hanging;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .mod-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
@@ -28,15 +29,16 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+
 </style>
   <path
-     d="M 6.8144531,11.580522 V 9.8402877 8.4867721 h 1.265625 V 9.9809127 L 7.5703125,11.580522 Z"
+     d="M 27.415527,5.0686002 V 3.0383267 1.4592252 h 1.476563 v 1.743164 l -0.594727,1.866211 z"
      id="text1"
-     class="corner-label"
-     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     class="key-label"
+     style="font-weight:700;font-size:14px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:central;text-anchor:middle;fill:#222222"
      aria-label="'" />
   <g
-     transform="translate(3.0,24.0) scale(0.023438)"
+     transform="translate(0.0,20) scale(0.027344,0.035156)"
      id="g2">
     <g
        transform="scale(1, -1) translate(0, -900)"
@@ -48,7 +50,7 @@
     </g>
   </g>
   <g
-     transform="translate(29.0,24.0) scale(0.023438)"
+     transform="translate(28.0,20) scale(0.027344,0.035156)"
      id="g4">
     <g
        transform="scale(1, -1) translate(0, -900)"

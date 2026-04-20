@@ -11,14 +11,15 @@
      id="defs5" />
   <style
      id="style1">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-.key rect { fill: none; stroke: none; }
-.corner-label {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+.key-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
   font-weight: 700;
-  font-size: 12px;
-  fill: #333;
-  dominant-baseline: hanging;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .mod-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
@@ -28,15 +29,16 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+
 </style>
   <path
-     d="M 6.328125,17.627397 V 16.602006 L 7.2363281,16.426225 V 10.303178 L 6.328125,10.127397 V 9.0961471 h 6.791016 v 2.3378909 h -1.3125 l -0.07617,-1.019532 H 8.9472656 v 2.34961 h 2.9882814 v 1.318359 H 8.9472656 v 2.34375 l 0.9140625,0.175781 v 1.025391 z"
+     d="m 24.059082,12.123288 v -1.196289 l 1.05957,-0.205079 V 3.5783658 l -1.05957,-0.2050781 v -1.203125 h 7.922852 v 2.727539 h -1.53125 l -0.08887,-1.1894531 h -3.24707 v 2.741211 h 3.486328 V 7.9875455 H 27.114746 V 10.72192 l 1.066406,0.205079 v 1.196289 z"
      id="text1"
-     class="corner-label"
-     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     class="key-label"
+     style="font-weight:700;font-size:14px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:central;text-anchor:middle;fill:#222222"
      aria-label="F" />
   <g
-     transform="translate(10.0,18.0) scale(0.035156)"
+     transform="translate(0.0,20) scale(0.054688,0.035156)"
      id="g5">
     <g
        transform="scale(1, -1) translate(0, -900)"

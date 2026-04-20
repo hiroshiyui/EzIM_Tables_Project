@@ -11,14 +11,15 @@
      id="defs7" />
   <style
      id="style1">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-.key rect { fill: none; stroke: none; }
-.corner-label {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+.key-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
   font-weight: 700;
-  font-size: 12px;
-  fill: #333;
-  dominant-baseline: hanging;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .mod-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
@@ -28,15 +29,16 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+
 </style>
   <path
-     d="M 6.328125,17.627397 V 16.602006 L 7.2363281,16.426225 V 10.303178 L 6.328125,10.127397 V 9.0961471 h 3.5332031 v 1.0312499 l -0.9140625,0.175781 v 2.460938 H 12.427734 V 10.303178 L 11.513672,10.127397 V 9.0961471 h 0.914062 1.705079 0.914062 v 1.0312499 l -0.914062,0.175781 v 6.123047 l 0.914062,0.175781 v 1.025391 h -3.533203 v -1.025391 l 0.914062,-0.175781 v -2.34375 H 8.9472656 v 2.34375 l 0.9140625,0.175781 v 1.025391 z"
+     d="M 22.914062,12.123288 V 10.926999 L 23.973633,10.72192 V 3.5783658 L 22.914062,3.3732877 v -1.203125 h 4.122071 v 1.203125 l -1.066406,0.2050781 v 2.8710938 h 4.060546 V 3.5783658 L 28.963867,3.3732877 v -1.203125 h 1.066406 1.989258 1.066406 v 1.203125 L 32.019531,3.5783658 V 10.72192 l 1.066406,0.205079 v 1.196289 h -4.12207 V 10.926999 L 30.030273,10.72192 V 7.9875455 H 25.969727 V 10.72192 l 1.066406,0.205079 v 1.196289 z"
      id="text1"
-     class="corner-label"
-     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     class="key-label"
+     style="font-weight:700;font-size:14px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:central;text-anchor:middle;fill:#222222"
      aria-label="H" />
   <g
-     transform="translate(10.0,18.0) scale(0.035156)"
+     transform="translate(0.0,20) scale(0.054688,0.035156)"
      id="g7">
     <g
        transform="scale(1, -1) translate(0, -900)"

@@ -11,14 +11,15 @@
      id="defs4" />
   <style
      id="style1">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-.key rect { fill: none; stroke: none; }
-.corner-label {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+.key-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
   font-weight: 700;
-  font-size: 12px;
-  fill: #333;
-  dominant-baseline: hanging;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .mod-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
@@ -28,15 +29,16 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+
 </style>
   <path
-     d="m 8.5898438,15.5356 -0.8847657,-1.013672 4.1777349,-4.30664 0.01172,-0.01758 -0.84375,-0.07031 V 9.0961471 h 3.509766 V 10.127397 L 13.757813,10.2856 Z M 6.328125,17.627397 V 16.602006 L 7.2363281,16.426225 V 10.303178 L 6.328125,10.127397 V 9.0961471 h 3.4863281 v 1.0312499 l -0.8671875,0.175781 v 6.123047 l 0.8671875,0.175781 v 1.025391 z m 4.910156,0 v -1.025391 l 0.796875,-0.07031 h 0.0059 l -2.1679691,-2.988281 1.1308591,-1.13086 3.023438,4.042969 0.83789,0.146484 v 1.025391 z"
+     d="m 25.740723,9.682858 -1.032227,-1.1826172 4.874024,-5.0244141 0.01367,-0.020508 -0.984375,-0.082031 v -1.203125 h 4.094727 v 1.203125 L 31.77002,3.557858 Z m -2.638672,2.44043 v -1.196289 l 1.05957,-0.205079 V 3.5783658 l -1.05957,-0.2050781 v -1.203125 h 4.067383 v 1.203125 L 26.157715,3.5783658 V 10.72192 l 1.011719,0.205079 v 1.196289 z m 5.728515,0 v -1.196289 l 0.929688,-0.08203 h 0.0068 l -2.529297,-3.4863278 1.319336,-1.3193359 3.527344,4.7167967 0.977539,0.170899 v 1.196289 z"
      id="text1"
-     class="corner-label"
-     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     class="key-label"
+     style="font-weight:700;font-size:14px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:central;text-anchor:middle;fill:#222222"
      aria-label="K" />
   <g
-     transform="translate(10.0,18.0) scale(0.035156)"
+     transform="translate(0.0,20) scale(0.054688,0.035156)"
      id="g4">
     <g
        transform="scale(1, -1) translate(0, -900)"

@@ -11,14 +11,15 @@
      id="defs4" />
   <style
      id="style1">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-.key rect { fill: none; stroke: none; }
-.corner-label {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+.key-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
   font-weight: 700;
-  font-size: 12px;
-  fill: #333;
-  dominant-baseline: hanging;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .mod-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
@@ -28,15 +29,16 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+
 </style>
   <path
-     d="m 7.1835937,19.76021 -0.84375,-0.457032 q 0.2285157,-0.410156 0.3515625,-0.849609 0.1230469,-0.433594 0.1230469,-0.972656 v -1.277344 h 1.5351563 l -0.00586,1.195312 q 0,0.685547 -0.3398437,1.306641 -0.3339844,0.626953 -0.8203126,1.054688 z"
+     d="m 27.661621,14.611569 -0.984375,-0.533203 q 0.266602,-0.478516 0.410156,-0.991211 0.143555,-0.50586 0.143555,-1.134766 v -1.490234 h 1.791016 l -0.0068,1.394531 q 0,0.799805 -0.396485,1.524414 -0.389648,0.731445 -0.957031,1.230469 z"
      id="text1"
-     class="corner-label"
-     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     class="key-label"
+     style="font-weight:700;font-size:14px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:central;text-anchor:middle;fill:#222222"
      aria-label="," />
   <g
-     transform="translate(3.0,24.0) scale(0.023438)"
+     transform="translate(0.0,20) scale(0.027344,0.035156)"
      id="g2">
     <g
        transform="scale(1, -1) translate(0, -900)"
@@ -48,7 +50,7 @@
     </g>
   </g>
   <g
-     transform="translate(29.0,24.0) scale(0.023438)"
+     transform="translate(28.0,20) scale(0.027344,0.035156)"
      id="g4">
     <g
        transform="scale(1, -1) translate(0, -900)"

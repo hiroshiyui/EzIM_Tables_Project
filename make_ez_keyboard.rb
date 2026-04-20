@@ -64,12 +64,13 @@ ANDROID_KEYCODE = {
 
 UNIT       = 60      # 1u in pixels
 KEY_BODY   = 56      # key body width/height for 1u keys
-LABEL_X    = 6       # letter label inset from key top-left
-LABEL_Y    = 10
-LABEL_SIZE = 12
-ROOT_TOP   = 18      # roots row starts below the corner label
-ROOT_BOTTOM_PAD = 2
-MARGIN     = 10
+LABEL_SIZE = 14      # px (~10pt) — minimum readable size on phone renders
+# Key body is split into two stacked regions with a 4px gap between them:
+#   top region  (height LABEL_REGION_H)  — alphanumeric label, centred
+#   bottom region (remainder)            — root glyphs, filled non-uniformly
+LABEL_REGION_H = 16
+REGION_GAP     = 4
+MARGIN         = 10
 
 # rows: [[keycode, label, width_units, mod?], ...]
 ROWS = [
@@ -89,7 +90,7 @@ ROWS = [
     ["u", "U", 1, false], ["i", "I", 1, false], ["o", "O", 1, false],
     ["p", "P", 1, false],
     ["[", "[", 1, false], ["]", "]", 1, false],
-    ["\\", "\\", 1.5, false],
+    ["\\", "\\", 1, false],
   ],
   [
     ["CapsLock", "Caps Lock", 1.75, true],
@@ -156,23 +157,22 @@ def render_key(keycode, label, width_units, is_mod, roots, x_off, y_off, plain: 
   if is_mod
     # centered label only
     parts << %(  <text class="mod-label" x="#{body_w / 2.0}" y="#{body_h / 2.0}">#{escape_text(label)}</text>)
-  else
-    # corner letter label
-    parts << %(  <text class="corner-label" x="#{LABEL_X}" y="#{LABEL_Y}">#{escape_text(label)}</text>)
+  elsif roots && !roots.empty?
+    # Top region: centred alphanumeric label
+    parts << %(  <text class="key-label" x="#{body_w / 2.0}" y="#{LABEL_REGION_H / 2.0}">#{escape_text(label)}</text>)
 
-    # root images, evenly distributed across the key body
-    if roots && !roots.empty?
-      n = roots.size
-      avail_w = body_w - 4
-      avail_h = body_h - ROOT_TOP - ROOT_BOTTOM_PAD
-      cell_w = avail_w / n.to_f
-      img_size = [cell_w - 2, avail_h].min.floor
-      roots.each_with_index do |fname, i|
-        cx = 2 + cell_w * (i + 0.5)
-        cy = ROOT_TOP + avail_h / 2.0
-        parts << %(  <image href="#{ROOT_IMG_DIR}/#{fname}" x="#{(cx - img_size / 2.0).round(2)}" y="#{(cy - img_size / 2.0).round(2)}" width="#{img_size}" height="#{img_size}"/>)
-      end
+    # Bottom region: roots, each filling its cell non-uniformly
+    roots_y = LABEL_REGION_H + REGION_GAP
+    roots_h = body_h - roots_y
+    n = roots.size
+    cell_w = body_w.to_f / n
+    roots.each_with_index do |fname, i|
+      x = (cell_w * i).round(3)
+      parts << %(  <image href="#{ROOT_IMG_DIR}/#{fname}" x="#{x}" y="#{roots_y}" width="#{cell_w.round(3)}" height="#{roots_h}" preserveAspectRatio="none"/>)
     end
+  else
+    # No EZ roots defined for this key — show the label centred.
+    parts << %(  <text class="mod-label" x="#{body_w / 2.0}" y="#{body_h / 2.0}">#{escape_text(label)}</text>)
   end
 
   parts << "</g>"
@@ -187,16 +187,14 @@ def escape_text(str)
   str.gsub("&", "&amp;").gsub("<", "&lt;").gsub(">", "&gt;")
 end
 
-STYLE_BORDERED = <<~CSS
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-  .key rect { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
-  .key.mod rect { fill: #f0f0f0; }
-  .corner-label {
+LABEL_CSS = <<~CSS
+  .key-label {
     font-family: "Roboto Slab", "DejaVu Serif", serif;
     font-weight: 700;
     font-size: #{LABEL_SIZE}px;
-    fill: #333;
-    dominant-baseline: hanging;
+    fill: #222;
+    text-anchor: middle;
+    dominant-baseline: central;
   }
   .mod-label {
     font-family: "Roboto Slab", "DejaVu Serif", serif;
@@ -208,24 +206,17 @@ STYLE_BORDERED = <<~CSS
   }
 CSS
 
+STYLE_BORDERED = <<~CSS
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
+  .key.mod rect { fill: #f0f0f0; }
+#{LABEL_CSS}
+CSS
+
 STYLE_PLAIN = <<~CSS
   @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
   .key rect { fill: none; stroke: none; }
-  .corner-label {
-    font-family: "Roboto Slab", "DejaVu Serif", serif;
-    font-weight: 700;
-    font-size: #{LABEL_SIZE}px;
-    fill: #333;
-    dominant-baseline: hanging;
-  }
-  .mod-label {
-    font-family: "Roboto Slab", "DejaVu Serif", serif;
-    font-weight: 400;
-    font-size: 14px;
-    fill: #222;
-    text-anchor: middle;
-    dominant-baseline: central;
-  }
+#{LABEL_CSS}
 CSS
 
 def build_svg(roots_map, plain: false)
@@ -286,35 +277,34 @@ def render_per_key_svg(keycode, label, width_units, is_mod, root_files)
   body = []
   if is_mod
     body << %(  <text class="mod-label" x="#{body_w / 2.0}" y="#{body_h / 2.0}">#{escape_text(label)}</text>)
-  else
-    body << %(  <text class="corner-label" x="#{LABEL_X}" y="#{LABEL_Y}">#{escape_text(label)}</text>)
+  elsif root_files && !root_files.empty?
+    # Top region — centred alphanumeric label.
+    body << %(  <text class="key-label" x="#{body_w / 2.0}" y="#{LABEL_REGION_H / 2.0}">#{escape_text(label)}</text>)
 
-    if root_files && !root_files.empty?
-      n = root_files.size
-      avail_w = body_w - 4
-      avail_h = body_h - ROOT_TOP - ROOT_BOTTOM_PAD
-      cell_w = avail_w / n.to_f
-      img_size = [cell_w - 2, avail_h].min.floor
-      scale = img_size / 1024.0
+    # Bottom region — roots filled non-uniformly per cell.  Inlined via
+    # <g transform> (Android VectorDrawable doesn't support nested <svg>).
+    roots_y = LABEL_REGION_H + REGION_GAP
+    roots_h = body_h - roots_y
+    n = root_files.size
+    cell_w = body_w.to_f / n
+    sx = cell_w / 1024.0
+    sy = roots_h.to_f / 1024.0
 
-      root_files.each_with_index do |fname, i|
-        cx = 2 + cell_w * (i + 0.5)
-        cy = ROOT_TOP + avail_h / 2.0
-        x = (cx - img_size / 2.0).round(2)
-        y = (cy - img_size / 2.0).round(2)
-
-        inner = extract_root_inner_paths(File.join(ROOT, ROOT_IMG_DIR, fname))
-        unless inner
-          warn "[skip] could not extract paths from #{fname} for #{keycode}"
-          next
-        end
-        body << %(  <g transform="translate(#{x},#{y}) scale(#{scale.round(6)})">)
-        body << %(    <g transform="scale(1, -1) translate(0, -900)">)
-        body << "      #{inner}"
-        body << %(    </g>)
-        body << %(  </g>)
+    root_files.each_with_index do |fname, i|
+      x = (cell_w * i).round(3)
+      inner = extract_root_inner_paths(File.join(ROOT, ROOT_IMG_DIR, fname))
+      unless inner
+        warn "[skip] could not extract paths from #{fname} for #{keycode}"
+        next
       end
+      body << %(  <g transform="translate(#{x},#{roots_y}) scale(#{sx.round(6)},#{sy.round(6)})">)
+      body << %(    <g transform="scale(1, -1) translate(0, -900)">)
+      body << "      #{inner}"
+      body << %(    </g>)
+      body << %(  </g>)
     end
+  else
+    body << %(  <text class="mod-label" x="#{body_w / 2.0}" y="#{body_h / 2.0}">#{escape_text(label)}</text>)
   end
 
   out = []

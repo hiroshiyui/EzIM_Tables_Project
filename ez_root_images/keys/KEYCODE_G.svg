@@ -11,14 +11,15 @@
      id="defs7" />
   <style
      id="style1">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-.key rect { fill: none; stroke: none; }
-.corner-label {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+.key-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
   font-weight: 700;
-  font-size: 12px;
-  fill: #333;
-  dominant-baseline: hanging;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .mod-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
@@ -28,15 +29,16 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+
 </style>
   <path
-     d="m 10.294922,17.750444 q -1.2714845,0 -2.1679689,-0.527344 Q 7.2304687,16.695756 6.75,15.758256 6.2753906,14.820756 6.2753906,13.584428 V 13.29146 q 0,-1.277344 0.4746094,-2.25 0.4746094,-0.972657 1.3417969,-1.5175786 0.8730469,-0.5507812 2.0625001,-0.5507812 0.919922,0 1.728516,0.2519531 0.808593,0.2519531 1.40625,0.7558594 V 11.873491 H 12.023438 L 11.783203,10.730913 Q 11.554688,10.531694 11.167969,10.414506 10.78125,10.29146 10.283203,10.29146 q -0.7148436,0 -1.236328,0.380859 -0.515625,0.375 -0.7910156,1.048828 -0.2753907,0.667969 -0.2753907,1.558594 v 0.304687 q 0,0.867188 0.2695313,1.511719 0.2753906,0.638672 0.8027344,0.990234 0.5273437,0.351563 1.2949216,0.351563 0.451172,0 0.826172,-0.08203 0.38086,-0.08789 0.626953,-0.210938 V 14.69771 l -1.21875,-0.09375 v -1.201172 h 2.935547 v 3.451172 q -0.568359,0.404296 -1.371094,0.65039 -0.796875,0.246094 -1.851562,0.246094 z"
+     d="m 28.317871,12.266842 q -1.483398,0 -2.529297,-0.615234 -1.045898,-0.615234 -1.606445,-1.7089844 -0.553711,-1.09375 -0.553711,-2.5361328 V 7.0646939 q 0,-1.4902343 0.553711,-2.625 0.553711,-1.1347656 1.56543,-1.7705078 1.018554,-0.6425781 2.40625,-0.6425781 1.073242,0 2.016601,0.2939453 0.94336,0.2939453 1.640625,0.8818359 V 5.4103971 H 30.334473 L 30.054199,4.0773892 Q 29.787598,3.8449674 29.336426,3.7082486 28.885254,3.5646939 28.304199,3.5646939 q -0.833984,0 -1.442383,0.444336 -0.601562,0.4375 -0.922851,1.2236328 -0.321289,0.7792969 -0.321289,1.8183594 v 0.3554687 q 0,1.0117188 0.314453,1.7636719 0.321289,0.7451172 0.936523,1.1552733 0.615235,0.410156 1.510743,0.410156 0.526367,0 0.963867,-0.0957 0.444336,-0.102539 0.731445,-0.246094 V 8.7053189 L 28.652832,8.5959439 V 7.1945767 h 3.424805 v 4.0263673 q -0.663086,0.47168 -1.59961,0.758789 -0.929687,0.287109 -2.160156,0.287109 z"
      id="text1"
-     class="corner-label"
-     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     class="key-label"
+     style="font-weight:700;font-size:14px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:central;text-anchor:middle;fill:#222222"
      aria-label="G" />
   <g
-     transform="translate(3.0,24.0) scale(0.023438)"
+     transform="translate(0.0,20) scale(0.027344,0.035156)"
      id="g4">
     <g
        transform="scale(1, -1) translate(0, -900)"
@@ -56,7 +58,7 @@
     </g>
   </g>
   <g
-     transform="translate(29.0,24.0) scale(0.023438)"
+     transform="translate(28.0,20) scale(0.027344,0.035156)"
      id="g7">
     <g
        transform="scale(1, -1) translate(0, -900)"

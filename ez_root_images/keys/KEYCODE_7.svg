@@ -11,14 +11,15 @@
      id="defs6" />
   <style
      id="style1">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-.key rect { fill: none; stroke: none; }
-.corner-label {
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+.key-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
   font-weight: 700;
-  font-size: 12px;
-  fill: #333;
-  dominant-baseline: hanging;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 .mod-label {
   font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
@@ -28,15 +29,16 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+
 </style>
   <path
-     d="M 7.9335937,17.627397 8.015625,16.76021 q 0.1347656,-1.253907 0.46875,-2.367188 0.3339844,-1.119141 0.8789063,-2.109375 0.5449218,-0.990234 1.3066407,-1.869141 H 7.6640625 l -0.064453,0.84375 h -1.3125 V 9.0961471 h 6.0292966 v 1.3183589 q -0.685547,0.802735 -1.136718,1.535157 -0.451172,0.726562 -0.732422,1.464843 -0.28125,0.732422 -0.445313,1.546875 -0.1640624,0.814454 -0.2753905,1.798829 l -0.082031,0.867187 z"
+     d="m 26.472168,12.123288 0.0957,-1.011719 q 0.157227,-1.4628907 0.546875,-2.7617188 0.389649,-1.3056641 1.025391,-2.4609375 0.635742,-1.1552735 1.524414,-2.1806641 h -3.506836 l -0.0752,0.984375 H 24.55127 V 2.1701627 h 7.034179 V 3.7082486 Q 30.785645,4.6447721 30.259277,5.4992642 29.73291,6.3469205 29.404785,7.2082486 29.07666,8.0627408 28.885254,9.0129361 28.693848,9.9631314 28.563965,11.111569 l -0.0957,1.011719 z"
      id="text1"
-     class="corner-label"
-     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     class="key-label"
+     style="font-weight:700;font-size:14px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:central;text-anchor:middle;fill:#222222"
      aria-label="7" />
   <g
-     transform="translate(3.0,24.0) scale(0.023438)"
+     transform="translate(0.0,20) scale(0.027344,0.035156)"
      id="g4">
     <g
        transform="scale(1, -1) translate(0, -900)"
@@ -56,7 +58,7 @@
     </g>
   </g>
   <g
-     transform="translate(29.0,24.0) scale(0.023438)"
+     transform="translate(28.0,20) scale(0.027344,0.035156)"
      id="g6">
     <g
        transform="scale(1, -1) translate(0, -900)"
