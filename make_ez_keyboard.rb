@@ -16,8 +16,51 @@ require "tomlrb"
 
 ROOT          = File.expand_path(__dir__)
 DEF_FILE      = File.join(ROOT, "roots_image_definition.toml")
-OUT_FILE      = File.join(ROOT, "ez_keyboard.svg")
-ROOT_IMG_DIR  = "ez_root_images" # path embedded into the SVG, relative to it
+OUT_FILE       = File.join(ROOT, "ez_keyboard.svg")
+OUT_FILE_PLAIN = File.join(ROOT, "ez_keyboard_plain.svg")
+ROOT_IMG_DIR   = "ez_root_images" # path embedded into the SVG, relative to it
+KEYS_OUT_DIR   = File.join(ROOT, "ez_root_images", "keys")
+
+# data-keycode values are Android KeyEvent keycode constant names
+# (https://developer.android.com/reference/android/view/KeyEvent).
+ANDROID_KEYCODE = {
+  "`"            => "KEYCODE_GRAVE",
+  "1"            => "KEYCODE_1",         "2" => "KEYCODE_2",
+  "3"            => "KEYCODE_3",         "4" => "KEYCODE_4",
+  "5"            => "KEYCODE_5",         "6" => "KEYCODE_6",
+  "7"            => "KEYCODE_7",         "8" => "KEYCODE_8",
+  "9"            => "KEYCODE_9",         "0" => "KEYCODE_0",
+  "-"            => "KEYCODE_MINUS",     "=" => "KEYCODE_EQUALS",
+  "Backspace"    => "KEYCODE_DEL",
+  "Tab"          => "KEYCODE_TAB",
+  "q" => "KEYCODE_Q", "w" => "KEYCODE_W", "e" => "KEYCODE_E",
+  "r" => "KEYCODE_R", "t" => "KEYCODE_T", "y" => "KEYCODE_Y",
+  "u" => "KEYCODE_U", "i" => "KEYCODE_I", "o" => "KEYCODE_O",
+  "p" => "KEYCODE_P",
+  "["            => "KEYCODE_LEFT_BRACKET",
+  "]"            => "KEYCODE_RIGHT_BRACKET",
+  "\\"           => "KEYCODE_BACKSLASH",
+  "CapsLock"     => "KEYCODE_CAPS_LOCK",
+  "a" => "KEYCODE_A", "s" => "KEYCODE_S", "d" => "KEYCODE_D",
+  "f" => "KEYCODE_F", "g" => "KEYCODE_G", "h" => "KEYCODE_H",
+  "j" => "KEYCODE_J", "k" => "KEYCODE_K", "l" => "KEYCODE_L",
+  ";"            => "KEYCODE_SEMICOLON",
+  "'"            => "KEYCODE_APOSTROPHE",
+  "Enter"        => "KEYCODE_ENTER",
+  "ShiftLeft"    => "KEYCODE_SHIFT_LEFT",
+  "ShiftRight"   => "KEYCODE_SHIFT_RIGHT",
+  "z" => "KEYCODE_Z", "x" => "KEYCODE_X", "c" => "KEYCODE_C",
+  "v" => "KEYCODE_V", "b" => "KEYCODE_B", "n" => "KEYCODE_N",
+  "m" => "KEYCODE_M",
+  ","            => "KEYCODE_COMMA",
+  "."            => "KEYCODE_PERIOD",
+  "/"            => "KEYCODE_SLASH",
+  "ControlLeft"  => "KEYCODE_CTRL_LEFT",
+  "ControlRight" => "KEYCODE_CTRL_RIGHT",
+  "AltLeft"      => "KEYCODE_ALT_LEFT",
+  "AltRight"     => "KEYCODE_ALT_RIGHT",
+  "Space"        => "KEYCODE_SPACE",
+}.freeze
 
 UNIT       = 60      # 1u in pixels
 KEY_BODY   = 56      # key body width/height for 1u keys
@@ -96,14 +139,19 @@ def collect_roots(defn)
   map
 end
 
-def render_key(keycode, label, width_units, is_mod, roots, x_off, y_off)
+def render_key(keycode, label, width_units, is_mod, roots, x_off, y_off, plain: false)
   body_w = (UNIT * width_units).to_i - (UNIT - KEY_BODY)
   body_h = KEY_BODY
   klass  = is_mod ? "key mod" : "key"
 
-  attrs = %(class="#{klass}" data-keycode="#{escape_attr(keycode)}" transform="translate(#{x_off},#{y_off})")
+  android_code = ANDROID_KEYCODE[keycode] || raise("no Android keycode mapping for #{keycode.inspect}")
+  attrs = %(class="#{klass}" data-keycode="#{android_code}" transform="translate(#{x_off},#{y_off})")
   parts = [%(<g #{attrs}>)]
-  parts << %(  <rect width="#{body_w}" height="#{body_h}" rx="6"/>)
+  parts << if plain
+             %(  <rect width="#{body_w}" height="#{body_h}"/>)
+           else
+             %(  <rect width="#{body_w}" height="#{body_h}" rx="6"/>)
+           end
 
   if is_mod
     # centered label only
@@ -139,35 +187,55 @@ def escape_text(str)
   str.gsub("&", "&amp;").gsub("<", "&lt;").gsub(">", "&gt;")
 end
 
-def build_svg(roots_map)
+STYLE_BORDERED = <<~CSS
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
+  .key.mod rect { fill: #f0f0f0; }
+  .corner-label {
+    font-family: "Roboto Slab", "DejaVu Serif", serif;
+    font-weight: 700;
+    font-size: #{LABEL_SIZE}px;
+    fill: #333;
+    dominant-baseline: hanging;
+  }
+  .mod-label {
+    font-family: "Roboto Slab", "DejaVu Serif", serif;
+    font-weight: 400;
+    font-size: 14px;
+    fill: #222;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+CSS
+
+STYLE_PLAIN = <<~CSS
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+  .key rect { fill: none; stroke: none; }
+  .corner-label {
+    font-family: "Roboto Slab", "DejaVu Serif", serif;
+    font-weight: 700;
+    font-size: #{LABEL_SIZE}px;
+    fill: #333;
+    dominant-baseline: hanging;
+  }
+  .mod-label {
+    font-family: "Roboto Slab", "DejaVu Serif", serif;
+    font-weight: 400;
+    font-size: 14px;
+    fill: #222;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+CSS
+
+def build_svg(roots_map, plain: false)
   total_w = MARGIN * 2 + UNIT * 15
   total_h = MARGIN * 2 + UNIT * ROWS.size
 
   out = []
   out << %(<?xml version="1.0" encoding="UTF-8"?>)
   out << %(<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 #{total_w} #{total_h}" width="#{total_w}" height="#{total_h}">)
-  out << <<~STYLE
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
-        .key rect { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
-        .key.mod rect { fill: #f0f0f0; }
-        .corner-label {
-          font-family: "Roboto Slab", "DejaVu Serif", serif;
-          font-weight: 700;
-          font-size: #{LABEL_SIZE}px;
-          fill: #333;
-          dominant-baseline: hanging;
-        }
-        .mod-label {
-          font-family: "Roboto Slab", "DejaVu Serif", serif;
-          font-weight: 400;
-          font-size: 14px;
-          fill: #222;
-          text-anchor: middle;
-          dominant-baseline: central;
-        }
-      </style>
-  STYLE
+  out << "<style>\n#{plain ? STYLE_PLAIN : STYLE_BORDERED}</style>"
 
   ROWS.each_with_index do |row, row_idx|
     y_off = MARGIN + row_idx * UNIT
@@ -175,7 +243,7 @@ def build_svg(roots_map)
     row.each do |(keycode, label, width_units, is_mod)|
       x_off = MARGIN + (x_units * UNIT).to_i
       roots = roots_map[keycode]
-      out << render_key(keycode, label, width_units, is_mod, roots, x_off, y_off)
+      out << render_key(keycode, label, width_units, is_mod, roots, x_off, y_off, plain: plain)
       x_units += width_units
     end
   end
@@ -202,17 +270,117 @@ def convert_text_to_path(svg_path)
   end
 end
 
+# Pull just the silhouette paths out of an already-generated root SVG so
+# we can inline them inside a per-key file without an external <image> ref.
+def extract_root_inner_paths(svg_path)
+  content = File.read(svg_path)
+  # everything between the inner makemeahanzi flip <g> open/close
+  m = content.match(%r{<g transform="scale\(1, -1\) translate\(0, -900\)">(.*?)</g>\s*</svg>}m)
+  m ? m[1].strip : nil
+end
+
+def render_per_key_svg(keycode, label, width_units, is_mod, root_files)
+  body_w = (UNIT * width_units).to_i - (UNIT - KEY_BODY)
+  body_h = KEY_BODY
+
+  body = []
+  if is_mod
+    body << %(  <text class="mod-label" x="#{body_w / 2.0}" y="#{body_h / 2.0}">#{escape_text(label)}</text>)
+  else
+    body << %(  <text class="corner-label" x="#{LABEL_X}" y="#{LABEL_Y}">#{escape_text(label)}</text>)
+
+    if root_files && !root_files.empty?
+      n = root_files.size
+      avail_w = body_w - 4
+      avail_h = body_h - ROOT_TOP - ROOT_BOTTOM_PAD
+      cell_w = avail_w / n.to_f
+      img_size = [cell_w - 2, avail_h].min.floor
+      scale = img_size / 1024.0
+
+      root_files.each_with_index do |fname, i|
+        cx = 2 + cell_w * (i + 0.5)
+        cy = ROOT_TOP + avail_h / 2.0
+        x = (cx - img_size / 2.0).round(2)
+        y = (cy - img_size / 2.0).round(2)
+
+        inner = extract_root_inner_paths(File.join(ROOT, ROOT_IMG_DIR, fname))
+        unless inner
+          warn "[skip] could not extract paths from #{fname} for #{keycode}"
+          next
+        end
+        body << %(  <g transform="translate(#{x},#{y}) scale(#{scale.round(6)})">)
+        body << %(    <g transform="scale(1, -1) translate(0, -900)">)
+        body << "      #{inner}"
+        body << %(    </g>)
+        body << %(  </g>)
+      end
+    end
+  end
+
+  out = []
+  out << %(<?xml version="1.0" encoding="UTF-8"?>)
+  out << %(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 #{body_w} #{body_h}" width="#{body_w}" height="#{body_h}">)
+  out << "<style>\n#{STYLE_PLAIN}</style>"
+  out.concat(body)
+  out << "</svg>"
+  out.join("\n")
+end
+
+def export_per_key_svgs(roots_map)
+  require "fileutils"
+  FileUtils.mkdir_p(KEYS_OUT_DIR)
+  count = 0
+  paths = []
+
+  ROWS.each do |row|
+    row.each do |(keycode, label, width_units, is_mod)|
+      const = ANDROID_KEYCODE[keycode]
+      out_path = File.join(KEYS_OUT_DIR, "#{const}.svg")
+      File.write(out_path, render_per_key_svg(keycode, label, width_units, is_mod, roots_map[keycode]))
+      paths << out_path
+      count += 1
+    end
+  end
+
+  paths
+end
+
+def batch_text_to_path(svg_paths)
+  return if svg_paths.empty?
+  unless system("which inkscape > /dev/null 2>&1")
+    warn "[skip] inkscape not found; per-key files keep <text> elements"
+    return
+  end
+
+  svg_paths.each do |p|
+    system("inkscape", "--export-text-to-path", "--export-plain-svg",
+           "--export-filename=#{p}", p,
+           out: File::NULL, err: File::NULL)
+  end
+  puts "  per-key text-to-path: #{svg_paths.size} file(s) processed"
+end
+
 def main
   defn = Tomlrb.load_file(DEF_FILE)
   roots_map = collect_roots(defn)
-  svg = build_svg(roots_map)
-  File.write(OUT_FILE, svg)
   total_keys = ROWS.flatten(1).size
   total_roots = roots_map.values.sum(&:size)
-  puts "wrote #{OUT_FILE}"
+
+  [
+    [OUT_FILE,       false, "bordered"],
+    [OUT_FILE_PLAIN, true,  "plain (no border, no rounded corners)"],
+  ].each do |path, plain, label|
+    File.write(path, build_svg(roots_map, plain: plain))
+    puts "wrote #{path} (#{label})"
+    convert_text_to_path(path)
+  end
+
+  per_key_paths = export_per_key_svgs(roots_map)
+  puts "wrote #{per_key_paths.size} per-key SVGs to #{KEYS_OUT_DIR}/"
+  batch_text_to_path(per_key_paths)
+
   puts "  keys:  #{total_keys}"
   puts "  roots: #{total_roots} across #{roots_map.size} key(s)"
-  convert_text_to_path(OUT_FILE)
 end
 
 main if $PROGRAM_NAME == __FILE__

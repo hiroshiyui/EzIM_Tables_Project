@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 56 56"
+   width="56"
+   height="56"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <style
+     id="style1">
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+.key rect { fill: none; stroke: none; }
+.corner-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 700;
+  font-size: 12px;
+  fill: #333;
+  dominant-baseline: hanging;
+}
+.mod-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 400;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+</style>
+  <path
+     d="m 6.7558594,17.627397 v -1.5 h 1.7050781 v 1.5 z"
+     id="text1"
+     class="corner-label"
+     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     aria-label="." />
+  <g
+     transform="translate(3.0,24.0) scale(0.023438)"
+     id="g2">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g1">
+      <path
+         d="M 462 456 Q 480 423 575 292 Q 666 171 733 101 Q 764 67 793 69 Q 881 75 958 79 Q 991 80 992 89 Q 993 98 956 112 Q 772 178 740 205 Q 617 304 490 466 Q 481 476 475 485 C 457 509 447 482 462 456 Z"
+         fill="black"
+         id="path1" />
+    </g>
+  </g>
+  <g
+     transform="translate(29.0,24.0) scale(0.023438)"
+     id="g4">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g3">
+      <path
+         d="M 309 496 Q 364 575 430 709 Q 439 728 448 738 Q 461 748 453 757 Q 446 767 412 779 Q 393 788 352 768 Q 307 752 237 741 Q 225 740 225 732 Q 224 726 237 720 Q 280 701 303 711 Q 361 736 368 736 Q 378 732 368 713 Q 325 616 285 548 L 269 522 Q 185 401 58 304 Q 45 294 53 291 Q 63 290 80 298 Q 177 347 257 432 Q 275 451 295 477 L 309 496 Z"
+         fill="black"
+         id="path2" />
+    </g>
+  </g>
+</svg>

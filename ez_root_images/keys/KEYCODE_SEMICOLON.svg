@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 56 56"
+   width="56"
+   height="56"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <style
+     id="style1">
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+.key rect { fill: none; stroke: none; }
+.corner-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 700;
+  font-size: 12px;
+  fill: #333;
+  dominant-baseline: hanging;
+}
+.mod-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 400;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+</style>
+  <path
+     d="m 6.5273437,12.793413 v -1.5 h 1.7050782 v 1.5 z m 0.4804688,6.966797 -0.84375,-0.457032 Q 6.3925781,18.893022 6.515625,18.453569 6.6386719,18.019975 6.6386719,17.480913 v -1.277344 h 1.5351562 l -0.00586,1.195312 q 0,0.685547 -0.3398438,1.306641 -0.3339844,0.626953 -0.8203125,1.054688 z"
+     id="text1"
+     class="corner-label"
+     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     aria-label=";" />
+  <g
+     transform="translate(10.0,18.0) scale(0.035156)"
+     id="g4">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g3">
+      <path
+         d="M 639 526 Q 756 544 901 531 Q 925 530 931 538 Q 938 551 926 564 Q 895 592 849 612 Q 833 618 807 608 Q 740 592 670 581 Q 654 580 640 576 L 586 569 Q 211 521 157 518 Q 150 519 144 518 Q 129 517 129 505 Q 128 492 148 478 Q 166 465 199 454 Q 209 450 229 459 Q 271 474 414 499 Q 498 515 586 520 L 639 526 Z"
+         fill="black"
+         id="path1" />
+      <path
+         d="M 586 520 Q 587 372 588 117 Q 587 93 575 84 Q 565 75 537 82 Q 506 88 476 93 Q 439 103 443 92 Q 444 85 468 70 Q 547 19 568 -12 Q 593 -49 611 -48 Q 627 -49 641 -11 Q 657 38 653 117 Q 638 322 639 526 L 640 576 Q 640 687 658 753 Q 677 786 616 810 Q 579 829 559 821 Q 540 814 557 789 Q 581 761 583 724 Q 584 708 586 569 L 586 520 Z"
+         fill="black"
+         id="path2" />
+      <path
+         d="M 342 367 Q 369 336 397 299 Q 410 283 428 280 Q 441 279 448 293 Q 457 309 451 344 Q 448 368 416 389 Q 382 407 345 423 Q 329 429 320 427 Q 314 424 314 409 Q 315 396 342 367 Z"
+         fill="black"
+         id="path3" />
+    </g>
+  </g>
+</svg>

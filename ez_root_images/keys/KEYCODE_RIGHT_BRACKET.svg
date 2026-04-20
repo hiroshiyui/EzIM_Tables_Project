@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 56 56"
+   width="56"
+   height="56"
+   version="1.1"
+   id="svg6"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6" />
+  <style
+     id="style1">
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+.key rect { fill: none; stroke: none; }
+.corner-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 700;
+  font-size: 12px;
+  fill: #333;
+  dominant-baseline: hanging;
+}
+.mod-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 400;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+</style>
+  <path
+     d="M 6.1230469,19.596147 V 18.330522 H 6.9609375 V 8.9848189 H 6.1230469 V 7.7191939 H 8.6660156 V 19.596147 Z"
+     id="text1"
+     class="corner-label"
+     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     aria-label="]" />
+  <g
+     transform="translate(3.0,24.0) scale(0.023438)"
+     id="g4">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g3">
+      <path
+         d="M 724 181 Q 767 470 828 581 Q 841 594 836 610 Q 826 629 751 664 Q 729 674 712 669 Q 531 632 309 609 Q 278 608 292 588 Q 308 572 333 565 Q 364 555 388 565 Q 682 625 708 606 Q 724 596 724 554 Q 706 400 661 182 C 655 153 719 151 724 181 Z"
+         fill="black"
+         id="path1" />
+      <path
+         d="M 254 378 Q 220 374 246 353 Q 285 323 311 326 Q 336 339 635 368 Q 648 367 659 381 Q 660 394 634 408 Q 592 432 515 413 Q 487 409 459 402 Q 432 398 254 378 Z"
+         fill="black"
+         id="path2" />
+      <path
+         d="M 661 182 Q 442 142 268 132 Q 238 131 255 104 Q 264 91 278 85 Q 294 81 313 83 Q 454 108 755 120 Q 771 121 774 134 Q 775 146 732 177 Q 728 180 724 181 L 661 182 Z"
+         fill="black"
+         id="path3" />
+    </g>
+  </g>
+  <g
+     transform="translate(29.0,24.0) scale(0.023438)"
+     id="g6">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g5">
+      <path
+         d="M 724 181 Q 767 470 828 581 Q 841 594 836 610 Q 826 629 751 664 Q 729 674 712 669 Q 531 632 309 609 Q 278 608 292 588 Q 308 572 333 565 Q 364 555 388 565 Q 682 625 708 606 Q 724 596 724 554 Q 706 400 661 182 C 655 153 719 151 724 181 Z"
+         fill="black"
+         id="path4" />
+      <path
+         d="M 661 182 Q 442 142 268 132 Q 238 131 255 104 Q 264 91 278 85 Q 294 81 313 83 Q 454 108 755 120 Q 771 121 774 134 Q 775 146 732 177 Q 728 180 724 181 L 661 182 Z"
+         fill="black"
+         id="path5" />
+    </g>
+  </g>
+</svg>

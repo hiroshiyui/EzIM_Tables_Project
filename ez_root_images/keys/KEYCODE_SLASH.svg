@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 56 56"
+   width="56"
+   height="56"
+   version="1.1"
+   id="svg3"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <style
+     id="style1">
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+.key rect { fill: none; stroke: none; }
+.corner-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 700;
+  font-size: 12px;
+  fill: #333;
+  dominant-baseline: hanging;
+}
+.mod-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 400;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+</style>
+  <path
+     d="M 5.8652344,18.359819 9.3867188,9.0961471 H 10.962891 L 7.4414062,18.359819 Z"
+     id="text1"
+     class="corner-label"
+     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     aria-label="/" />
+  <g
+     transform="translate(10.0,18.0) scale(0.035156)"
+     id="g3">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g2">
+      <path
+         d="M 440 550 Q 268 249 204 207 Q 147 174 163 120 Q 173 90 190 89 Q 197 90 219 104 Q 336 173 638 205 Q 675 209 735 210 C 765 211 746 240 716 240 Q 515 240 306 198 Q 258 189 286 224 Q 316 276 403 396 Q 536 583 565 605 Q 575 615 582 624 Q 586 640 562 660 Q 516 693 483 695 Q 465 695 457 687 Q 453 678 464 667 Q 471 655 475 633 Q 474 611 440 550 Z"
+         fill="black"
+         id="path1" />
+      <path
+         d="M 735 210 Q 760 170 787 123 Q 799 98 814 89 Q 823 85 834 94 Q 850 106 847 155 Q 848 230 640 401 Q 633 408 626 396 Q 622 381 631 368 Q 671 311 716 240 L 735 210 Z"
+         fill="black"
+         id="path2" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 56 56"
+   width="56"
+   height="56"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <style
+     id="style1">
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap');
+.key rect { fill: none; stroke: none; }
+.corner-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 700;
+  font-size: 12px;
+  fill: #333;
+  dominant-baseline: hanging;
+}
+.mod-label {
+  font-family: &quot;Roboto Slab&quot;, &quot;DejaVu Serif&quot;, serif;
+  font-weight: 400;
+  font-size: 14px;
+  fill: #222;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+</style>
+  <path
+     d="M 6.8144531,11.580522 V 9.8402877 8.4867721 h 1.265625 V 9.9809127 L 7.5703125,11.580522 Z"
+     id="text1"
+     class="corner-label"
+     style="font-weight:700;font-size:12px;font-family:'Roboto Slab', 'DejaVu Serif', serif;dominant-baseline:hanging;fill:#333333"
+     aria-label="'" />
+  <g
+     transform="translate(3.0,24.0) scale(0.023438)"
+     id="g2">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g1">
+      <path
+         d="M 873 94 Q 904 107 894 147 Q 875 205 863 295 Q 862 313 854 322 Q 847 331 841 305 Q 828 226 810 175 Q 798 150 772 136 Q 634 76 381 108 Q 345 115 324 129 Q 287 150 281 180 Q 253 270 379 434 Q 434 507 575 635 Q 612 669 654 691 Q 670 697 673 707 Q 680 722 661 736 Q 627 760 585 772 Q 575 776 559 769 Q 474 735 426 725 Q 356 712 253 709 Q 240 710 235 702 Q 231 695 245 682 Q 261 666 278 661 Q 315 652 512 707 Q 525 711 531 704 Q 537 697 524 685 Q 260 379 237 252 Q 236 249 235 243 Q 225 186 239 148 Q 245 120 273 97 Q 375 4 674 36 Q 680 37 686 38 Q 771 48 873 94 Z"
+         fill="black"
+         id="path1" />
+    </g>
+  </g>
+  <g
+     transform="translate(29.0,24.0) scale(0.023438)"
+     id="g4">
+    <g
+       transform="scale(1, -1) translate(0, -900)"
+       id="g3">
+      <path
+         d="M 190 699 Q 194 712 183 726 Q 173 736 143 752 Q 121 764 113 756 Q 106 749 113 734 Q 131 698 132 633 Q 136 393 113 170 Q 112 131 88 95 Q 78 79 88 59 Q 97 38 107 29 Q 117 22 135 35 Q 213 98 460 119 Q 482 120 483 131 Q 482 144 453 162 Q 437 174 352 149 Q 229 127 183 113 Q 173 109 169 113 Q 162 114 161 133 Q 174 343 181 609 Q 182 664 190 699 Z"
+         fill="black"
+         id="path2" />
+    </g>
+  </g>
+</svg>
