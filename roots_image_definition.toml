@@ -1,0 +1,375 @@
+# EZ Roots SVG Image Definitions
+#
+# Each EZ key may carry MULTIPLE roots (字根).
+# Primary root  : from ezsource12-3/header/gcin_ez_header.txt (%keyname).
+# Secondary root: from the 輕鬆鍵盤圖 keyboard diagram
+#                 (reference image: Documents/ezIME/IMG_20110203_211918.jpg).
+#
+# Schema per [[keys]] entry:
+#   key   : the typed key (single character)
+#   roots : ordered list; index 0 is the primary root.
+#           each item:
+#             char      — displayed glyph
+#             codepoint — U+XXXX of `char`
+#             svg_char  — character whose SVG is actually used
+#             svg_file  — filename under makemeahanzi/svgs/
+#             status    — "direct"      (makemeahanzi has `char` itself)
+#                         "fallback"    (char is a Kangxi/CJK-radical codepoint
+#                                       not in makemeahanzi; svg_char substitutes)
+#                         "descriptive" (image composed from a subset of strokes
+#                                       of a donor character; strokes inlined in
+#                                       `strokes` as SVG path `d` values, sourced
+#                                       from makemeahanzi/graphics.txt)
+#                         "composite"   (image composed by stacking multiple
+#                                       makemeahanzi glyphs, each optionally
+#                                       transformed — e.g. one glyph nested
+#                                       inside another)
+#                         "missing"     (no SVG available; needs manual artwork)
+#             note      — optional rationale
+#
+# Descriptive entries add these extra fields:
+#   source_char     — donor character (e.g. "陳")
+#   source_svg_file — donor's makemeahanzi svg filename (for reference)
+#   stroke_indices  — 0-based indices into graphics.txt `strokes` array
+#   strokes         — inline array of SVG path `d` values, in stroke order
+# Consumers should assemble these paths inside an SVG canvas matching
+# makemeahanzi's 1024×1024 viewBox ("0 0 1024 1024" with y-axis flipped via
+# transform="scale(1 -1) translate(0 -900)" as makemeahanzi does).
+#
+# Composite entries use these extra fields:
+#   components — ordered list of component glyphs; painted in order so later
+#                items appear on top:
+#                  char      — the component glyph
+#                  svg_file  — its makemeahanzi svg filename
+#                  transform — optional SVG transform applied to this component
+#                              (evaluated inside the flipped outer group).
+
+[meta]
+primary_source   = "ezsource12-3/header/gcin_ez_header.txt"
+secondary_source = "輕鬆鍵盤圖 diagram (IMG_20110203_211918.jpg)"
+svg_source       = "makemeahanzi/svgs"
+svg_naming       = "decimal-codepoint.svg (e.g. U+4E00 一 -> 19968.svg)"
+
+# ============================================================
+# Number / symbol row
+# ============================================================
+
+[[keys]]
+key = "`"
+roots = [
+  { char = "厂", codepoint = "U+5382", svg_char = "厂", svg_file = "21378.svg", status = "direct" },
+  { char = "广", codepoint = "U+5E7F", svg_char = "广", svg_file = "24191.svg", status = "direct" },
+]
+
+[[keys]]
+key = "1"
+roots = [
+  { char = "⼁", codepoint = "U+2F01", svg_char = "丨", svg_file = "20008.svg", status = "fallback", note = "Kangxi radical LINE not in makemeahanzi; use 丨 (U+4E28)." },
+]
+
+[[keys]]
+key = "2"
+roots = [
+  { char = "車", codepoint = "U+8ECA", svg_char = "車", svg_file = "36554.svg", status = "direct" },
+]
+
+[[keys]]
+key = "3"
+roots = [
+  { char = "糸", codepoint = "U+7CF8", svg_char = "糸", svg_file = "31992.svg", status = "direct" },
+  { char = "幺", codepoint = "U+5E7A", svg_char = "幺", svg_file = "24186.svg", status = "direct" },
+]
+
+[[keys]]
+key = "4"
+roots = [
+  { char = "言", codepoint = "U+8A00", svg_char = "言", svg_file = "35328.svg", status = "direct" },
+]
+
+[[keys]]
+key = "5"
+roots = [
+  { char = "貝", codepoint = "U+8C9D", svg_char = "貝", svg_file = "35997.svg", status = "direct" },
+]
+
+[[keys]]
+key = "6"
+roots = [
+  { char = "雨", codepoint = "U+96E8", svg_char = "雨", svg_file = "38632.svg", status = "direct" },
+]
+
+[[keys]]
+key = "7"
+roots = [
+  { char = "⼧", codepoint = "U+2F27", svg_char = "宀", svg_file = "23424.svg", status = "fallback", note = "Kangxi radical ROOF not in makemeahanzi; use 宀 (U+5B80)." },
+  { char = "冖", codepoint = "U+5196", svg_char = "冖", svg_file = "20886.svg", status = "direct" },
+]
+
+[[keys]]
+key = "8"
+roots = [
+  { char = "八", codepoint = "U+516B", svg_char = "八", svg_file = "20843.svg", status = "direct" },
+]
+
+[[keys]]
+key = "9"
+roots = [
+  { char = "耳", codepoint = "U+8033", svg_char = "耳", svg_file = "32819.svg", status = "direct" },
+  { char = "阝", codepoint = "U+961D", svg_char = "阝", svg_file = "38429.svg", status = "direct" },
+]
+
+[[keys]]
+key = "0"
+roots = [
+  { char = "鳥", codepoint = "U+9CE5", svg_char = "鳥", svg_file = "40165.svg", status = "direct" },
+  { char = "隹", codepoint = "U+96B9", svg_char = "隹", svg_file = "38585.svg", status = "direct" },
+]
+
+[[keys]]
+key = "-"
+roots = [
+  { char = "儿", codepoint = "U+513F", svg_char = "儿", svg_file = "20799.svg", status = "direct" },
+  { char = "几", codepoint = "U+51E0", svg_char = "几", svg_file = "20960.svg", status = "direct" },
+]
+
+[[keys]]
+key = "="
+roots = [
+  { char = "母", codepoint = "U+6BCD", status = "descriptive", source_char = "母", source_svg_file = "27597.svg", stroke_indices = [0, 1], strokes = [
+    "M 383 734 Q 331 780 318 769 Q 311 759 310 746 Q 346 674 296 470 Q 295 466 293 461 L 284 426 Q 242 282 195 236 Q 174 215 217 167 Q 226 157 242 165 Q 315 201 494 201 Q 602 204 630 195 L 690 185 Q 763 172 831 147 Q 855 137 866 141 Q 879 145 871 166 Q 862 188 808 229 Q 789 245 699 237 L 639 237 Q 455 243 291 233 Q 269 230 276 249 Q 307 352 332 433 L 341 465 Q 369 568 381 627 Q 387 669 396 696 C 402 719 402 719 383 734 Z",
+    "M 723 506 Q 727 671 740 705 Q 755 729 743 737 Q 736 750 676 788 Q 660 801 611 783 Q 529 762 383 734 C 354 728 367 689 396 696 Q 408 697 423 702 Q 618 756 646 731 Q 662 724 663 692 Q 664 586 664 498 L 662 456 Q 659 333 639 237 L 630 195 Q 596 78 572 59 Q 565 55 531 67 Q 506 77 490 83 Q 477 86 480 73 Q 483 64 502 50 Q 544 7 563 -26 Q 594 -56 614 -36 Q 657 19 690 185 L 699 237 Q 708 276 721 457 L 723 506 Z",
+  ], note = "Outer frame of 母 composed from its 1st–2nd strokes as fetched from makemeahanzi/graphics.txt. Labeled as 母 (a partial-glyph rendering of the same character)." },
+  { char = "匃", codepoint = "U+5303", status = "descriptive", source_char = "葛", source_svg_file = "33883.svg", stroke_indices = [7, 8, 9, 10, 11], strokes = [
+    "M 371 320 Q 395 342 418 361 Q 428 368 420 384 Q 414 391 408 398 L 374 423 Q 373 424 371 424 Q 361 424 360 412 Q 348 333 235 256 Q 217 247 187 226 Q 177 216 191 215 Q 206 214 230 224 Q 305 255 356 305 L 371 320 Z",
+    "M 521 304 Q 654 325 702 323 Q 720 323 725 315 Q 741 282 727 131 Q 712 68 701 43 Q 692 21 679 20 Q 667 16 600 34 Q 591 37 591 32 Q 591 28 601 20 Q 641 -20 659 -49 Q 669 -67 681 -66 Q 694 -67 709 -54 Q 760 -15 780 104 Q 790 167 799 257 Q 800 281 816 299 Q 829 312 829 320 Q 828 327 809 341 Q 784 360 749 372 Q 730 378 659 361 Q 640 358 614 352 Q 473 325 371 320 C 341 318 329 317 356 305 Q 377 284 441 296 Q 459 300 480 300 L 521 304 Z",
+    "M 515 237 Q 527 252 541 263 Q 551 272 541 286 Q 531 296 521 304 C 498 323 483 330 480 300 Q 476 237 403 178 Q 384 163 374 154 Q 365 142 378 144 Q 390 144 408 152 Q 463 179 498 220 Q 498 221 500 222 L 515 237 Z",
+    "M 500 222 Q 503 219 508 216 Q 566 191 638 150 Q 654 140 666 140 Q 673 141 676 150 Q 682 163 662 192 Q 640 228 515 237 C 485 239 478 240 500 222 Z",
+    "M 357 177 Q 363 190 352 201 Q 334 220 306 232 Q 293 236 286 229 Q 280 225 289 208 Q 305 183 303 146 Q 296 103 276 84 Q 266 71 270 61 Q 277 43 293 30 Q 303 20 319 32 Q 404 86 594 75 Q 604 75 616 73 Q 635 69 644 75 Q 651 81 646 91 Q 640 101 607 122 Q 586 134 519 122 Q 507 128 354 96 Q 344 92 343 95 Q 339 99 341 107 Q 350 162 357 177 Z",
+  ], note = "Bottom component of 曷 composed from 葛's last 5 strokes (indices 7–11) as fetched from makemeahanzi/graphics.txt. char='匃' is a best-guess label for the composed shape." },
+]
+
+# ============================================================
+# Top row (QWERTYUIOP + [ ])
+# ============================================================
+
+[[keys]]
+key = "q"
+roots = [
+  { char = "手", codepoint = "U+624B", svg_char = "手", svg_file = "25163.svg", status = "direct" },
+]
+
+[[keys]]
+key = "w"
+roots = [
+  { char = "田", codepoint = "U+7530", svg_char = "田", svg_file = "30000.svg", status = "direct" },
+  { char = "囗", codepoint = "U+56D7", status = "composite", components = [
+    { char = "囗", svg_file = "22231.svg" },
+    { char = "乂", svg_file = "20034.svg", transform = "translate(256 256) scale(0.5)" },
+  ], note = "囗 enclosing a half-scale 乂 centered inside, as a mnemonic for the compound root shape." },
+]
+
+[[keys]]
+key = "e"
+roots = [
+  { char = "水", codepoint = "U+6C34", svg_char = "水", svg_file = "27700.svg", status = "direct" },
+]
+
+[[keys]]
+key = "r"
+roots = [
+  { char = "口", codepoint = "U+53E3", svg_char = "口", svg_file = "21475.svg", status = "direct" },
+]
+
+[[keys]]
+key = "t"
+roots = [
+  { char = "廾", codepoint = "U+5EFE", svg_char = "廾", svg_file = "24318.svg", status = "direct" },
+  { char = "艸", codepoint = "U+8278", svg_char = "艸", svg_file = "33400.svg", status = "direct", note = "grass radical, shown as 艹 in diagram." },
+]
+
+[[keys]]
+key = "y"
+roots = [
+  { char = "⼂", codepoint = "U+2F02", svg_char = "丶", svg_file = "20022.svg", status = "fallback", note = "Kangxi radical DOT not in makemeahanzi; use 丶 (U+4E36)." },
+  { char = "卜", codepoint = "U+535C", svg_char = "卜", svg_file = "21340.svg", status = "direct" },
+]
+
+[[keys]]
+key = "u"
+roots = [
+  { char = "山", codepoint = "U+5C71", svg_char = "山", svg_file = "23665.svg", status = "direct" },
+]
+
+[[keys]]
+key = "i"
+roots = [
+  { char = "戈", codepoint = "U+6208", svg_char = "戈", svg_file = "25096.svg", status = "direct" },
+  { char = "弋", codepoint = "U+5F0B", svg_char = "弋", svg_file = "24331.svg", status = "direct" },
+]
+
+[[keys]]
+key = "o"
+roots = [
+  { char = "人", codepoint = "U+4EBA", svg_char = "人", svg_file = "20154.svg", status = "direct" },
+  { char = "入", codepoint = "U+5165", svg_char = "入", svg_file = "20837.svg", status = "direct" },
+]
+
+[[keys]]
+key = "p"
+roots = [
+  { char = "心", codepoint = "U+5FC3", svg_char = "心", svg_file = "24515.svg", status = "direct" },
+]
+
+[[keys]]
+key = "["
+roots = [
+  { char = "⼕", codepoint = "U+2F15", svg_char = "匚", svg_file = "21274.svg", status = "fallback", note = "Kangxi radical RIGHT OPEN BOX not in makemeahanzi; use 匚 (U+531A)." },
+  { char = "彐", codepoint = "U+5F50", svg_char = "彐", svg_file = "24400.svg", status = "direct" },
+]
+
+# ============================================================
+# Home row (ASDFGHJKL + ; ')
+# ============================================================
+
+[[keys]]
+key = "a"
+roots = [
+  { char = "日", codepoint = "U+65E5", svg_char = "日", svg_file = "26085.svg", status = "direct" },
+  { char = "門", codepoint = "U+9580", svg_char = "門", svg_file = "38272.svg", status = "direct" },
+]
+
+[[keys]]
+key = "s"
+roots = [
+  { char = "尸", codepoint = "U+5C38", svg_char = "尸", svg_file = "23608.svg", status = "direct" },
+  { char = "戶", codepoint = "U+6236", svg_char = "戶", svg_file = "25142.svg", status = "direct" },
+]
+
+[[keys]]
+key = "d"
+roots = [
+  { char = "木", codepoint = "U+6728", svg_char = "木", svg_file = "26408.svg", status = "direct" },
+]
+
+[[keys]]
+key = "f"
+roots = [
+  { char = "火", codepoint = "U+706B", svg_char = "火", svg_file = "28779.svg", status = "direct" },
+]
+
+[[keys]]
+key = "g"
+roots = [
+  { char = "土", codepoint = "U+571F", svg_char = "土", svg_file = "22303.svg", status = "direct" },
+]
+
+[[keys]]
+key = "h"
+roots = [
+  { char = "竹", codepoint = "U+7AF9", svg_char = "竹", svg_file = "31481.svg", status = "direct" },
+]
+
+[[keys]]
+key = "j"
+roots = [
+  { char = "十", codepoint = "U+5341", svg_char = "十", svg_file = "21313.svg", status = "direct" },
+]
+
+[[keys]]
+key = "k"
+roots = [
+  { char = "大", codepoint = "U+5927", svg_char = "大", svg_file = "22823.svg", status = "direct" },
+]
+
+[[keys]]
+key = "l"
+roots = [
+  { char = "中", codepoint = "U+4E2D", svg_char = "中", svg_file = "20013.svg", status = "direct" },
+  { char = "虫", codepoint = "U+866B", svg_char = "虫", svg_file = "34411.svg", status = "direct" },
+]
+
+[[keys]]
+key = ";"
+roots = [
+  { char = "寸", codepoint = "U+5BF8", svg_char = "寸", svg_file = "23544.svg", status = "direct" },
+]
+
+[[keys]]
+key = "'"
+roots = [
+  { char = "⺃", codepoint = "U+2E83", svg_char = "乙", svg_file = "20057.svg", status = "fallback", note = "CJK radical 'second two' not in makemeahanzi; use 乙 (U+4E59)." },
+]
+
+# ============================================================
+# Bottom row (ZXCVBNM + , . /)  and the \ key
+# ============================================================
+
+[[keys]]
+key = "z"
+roots = [
+  { char = "辶", codepoint = "U+8FB6", svg_char = "辶", svg_file = "36790.svg", status = "direct" },
+]
+
+[[keys]]
+key = "x"
+roots = [
+  { char = "乂", codepoint = "U+4E42", svg_char = "乂", svg_file = "20034.svg", status = "direct" },
+  { char = "又", codepoint = "U+53C8", svg_char = "又", svg_file = "21448.svg", status = "direct" },
+]
+
+[[keys]]
+key = "c"
+roots = [
+  { char = "金", codepoint = "U+91D1", svg_char = "金", svg_file = "37329.svg", status = "direct" },
+]
+
+[[keys]]
+key = "v"
+roots = [
+  { char = "女", codepoint = "U+5973", svg_char = "女", svg_file = "22899.svg", status = "direct" },
+]
+
+[[keys]]
+key = "b"
+roots = [
+  { char = "月", codepoint = "U+6708", svg_char = "月", svg_file = "26376.svg", status = "direct" },
+  { char = "鬥", codepoint = "U+9B25", svg_char = "鬥", svg_file = "39717.svg", status = "direct" },
+]
+
+[[keys]]
+key = "n"
+roots = [
+  { char = "弓", codepoint = "U+5F13", svg_char = "弓", svg_file = "24339.svg", status = "direct" },
+]
+
+[[keys]]
+key = "m"
+roots = [
+  { char = "一", codepoint = "U+4E00", svg_char = "一", svg_file = "19968.svg", status = "direct" },
+]
+
+[[keys]]
+key = ","
+roots = [
+  { char = "⼃", codepoint = "U+2F03", svg_char = "丿", svg_file = "20031.svg", status = "fallback", note = "Kangxi radical SLASH not in makemeahanzi; use 丿 (U+4E3F)." },
+]
+
+[[keys]]
+key = "."
+roots = [
+  { char = "㇏", codepoint = "U+31CF", status = "descriptive", source_char = "人", source_svg_file = "20154.svg", stroke_indices = [1], strokes = [
+    "M 462 456 Q 480 423 575 292 Q 666 171 733 101 Q 764 67 793 69 Q 881 75 958 79 Q 991 80 992 89 Q 993 98 956 112 Q 772 178 740 205 Q 617 304 490 466 Q 481 476 475 485 C 457 509 447 482 462 456 Z",
+  ], note = "㇏ (CJK stroke N, falling-right) composed from 人's 2nd stroke as fetched from makemeahanzi/graphics.txt." },
+]
+
+[[keys]]
+key = "/"
+roots = [
+  { char = "⼛", codepoint = "U+2F1B", svg_char = "厶", svg_file = "21430.svg", status = "fallback", note = "Kangxi radical PRIVATE not in makemeahanzi; use 厶 (U+53B6)." },
+]
+
+[[keys]]
+key = "\\"
+roots = [
+  { char = "的", codepoint = "U+7684", svg_char = "的", svg_file = "30340.svg", status = "direct" },
+]
