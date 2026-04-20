@@ -183,8 +183,17 @@ roots = [
 [[keys]]
 key = "t"
 roots = [
+  { char = "䒑", codepoint = "U+4491", status = "descriptive", source_char = "前", source_svg_file = "21069.svg", stroke_indices = [0, 1, 2], strokes = [
+    "M 378 762 Q 438 698 453 697 Q 463 696 469 709 Q 475 722 468 752 Q 464 771 436 786 Q 373 816 356 811 Q 352 807 351 795 Q 354 785 378 762 Z",
+    "M 640 810 Q 622 779 570 707 Q 560 689 578 693 Q 596 705 686 766 Q 705 784 730 795 Q 752 807 739 825 Q 724 841 697 856 Q 672 869 658 866 Q 645 865 649 850 Q 653 831 640 810 Z",
+    "M 520 614 Q 578 618 633 625 Q 772 643 935 629 Q 959 628 965 636 Q 972 649 960 661 Q 891 724 816 698 Q 713 679 384 638 Q 333 632 300 627 Q 225 614 113 612 Q 100 612 98 601 Q 98 588 117 574 Q 133 561 165 550 Q 175 546 194 554 Q 212 561 290 575 Q 393 600 520 614 Z",
+  ], note = "䒑 (herb-top: 丷 + 一) composed from 前's 1st–3rd strokes as fetched from makemeahanzi/graphics.txt." },
   { char = "廾", codepoint = "U+5EFE", svg_char = "廾", svg_file = "24318.svg", status = "direct" },
-  { char = "艸", codepoint = "U+8278", svg_char = "艸", svg_file = "33400.svg", status = "direct", note = "grass radical, shown as 艹 in diagram." },
+  { char = "⺌", codepoint = "U+2E8C", status = "descriptive", source_char = "當", source_svg_file = "30070.svg", stroke_indices = [0, 1, 2], strokes = [
+    "M 522 604 Q 534 760 546 812 Q 550 822 530 837 Q 496 855 472 859 Q 456 862 448 853 Q 441 846 449 831 Q 465 810 466 795 Q 476 704 479 598 C 480 568 520 574 522 604 Z",
+    "M 321 701 Q 339 682 358 656 Q 370 643 384 641 Q 394 641 401 653 Q 407 666 402 696 Q 396 720 321 748 Q 306 752 300 751 Q 296 748 295 735 Q 296 725 321 701 Z",
+    "M 650 764 Q 632 737 579 678 Q 569 662 586 664 Q 605 673 688 718 Q 707 733 732 742 Q 753 751 743 768 Q 731 786 707 801 Q 685 816 672 814 Q 659 813 662 800 Q 665 781 650 764 Z",
+  ], note = "⺌ (CJK radical SMALL ONE, small-top form 丨+丷) composed from 當's 1st–3rd strokes as fetched from makemeahanzi/graphics.txt." },
 ]
 
 [[keys]]
@@ -204,7 +213,10 @@ roots = [
 key = "i"
 roots = [
   { char = "戈", codepoint = "U+6208", svg_char = "戈", svg_file = "25096.svg", status = "direct" },
-  { char = "弋", codepoint = "U+5F0B", svg_char = "弋", svg_file = "24331.svg", status = "direct" },
+  { char = "弋", codepoint = "U+5F0B", status = "descriptive", source_char = "弋", source_svg_file = "24331.svg", stroke_indices = [0, 1], strokes = [
+    "M 514 484 Q 565 503 707 536 Q 720 536 728 552 Q 728 567 700 575 Q 661 596 576 560 Q 536 545 498 529 L 452 513 Q 428 506 169 434 Q 136 427 164 409 Q 206 382 240 395 Q 340 431 468 470 L 514 484 Z",
+    "M 468 470 Q 603 125 788 20 Q 854 -23 883 -20 Q 904 -14 893 14 Q 887 62 888 201 Q 887 226 878 227 Q 875 227 835 130 Q 819 88 790 98 Q 780 102 767 109 Q 625 208 514 484 L 498 529 Q 461 638 458 713 Q 462 759 400 769 Q 360 778 341 766 Q 322 756 335 736 Q 392 702 399 667 Q 426 583 452 513 L 468 470 Z",
+  ], note = "Dotless variant of 弋 composed from its 1st–2nd strokes (omitting the 3rd-stroke top-right dot) as fetched from makemeahanzi/graphics.txt." },
 ]
 
 [[keys]]
@@ -223,8 +235,22 @@ roots = [
 [[keys]]
 key = "["
 roots = [
-  { char = "⼕", codepoint = "U+2F15", svg_char = "匚", svg_file = "21274.svg", status = "fallback", note = "Kangxi radical RIGHT OPEN BOX not in makemeahanzi; use 匚 (U+531A)." },
+  { char = "匚", codepoint = "U+531A", svg_char = "匚", svg_file = "21274.svg", status = "direct" },
+  { char = "長", codepoint = "U+9577", status = "descriptive", source_char = "長", source_svg_file = "38263.svg", stroke_indices = [5, 6, 7], strokes = [
+    "M 287 347 Q 314 307 314 197 Q 314 130 300 88 Q 293 52 257 10 Q 245 -2 253 -23 Q 262 -51 276 -64 Q 289 -74 302 -59 Q 354 5 511 134 Q 527 144 528 154 Q 529 160 524 159 Q 511 158 376 72 Q 366 66 361 70 Q 357 73 357 85 Q 363 301 367 324 Q 371 342 359 351 Q 355 355 345 360 C 320 377 273 374 287 347 Z",
+    "M 621 241 Q 715 319 730 325 Q 749 337 738 352 Q 725 368 698 379 Q 674 389 663 386 Q 651 383 656 371 Q 662 344 600 257 C 583 233 598 222 621 241 Z",
+    "M 600 257 Q 537 308 454 379 C 431 398 372 383 399 371 Q 442 355 472 318 Q 623 162 744 56 Q 766 35 797 40 Q 909 59 952 72 Q 971 76 977 86 Q 981 95 968 97 Q 782 131 672 205 Q 648 221 621 241 L 600 257 Z",
+  ], note = "Bottom portion of 長 composed from its 6th–8th strokes as fetched from makemeahanzi/graphics.txt. Labeled as 長 (a partial-glyph rendering of the same character)." },
+]
+
+[[keys]]
+key = "]"
+roots = [
   { char = "彐", codepoint = "U+5F50", svg_char = "彐", svg_file = "24400.svg", status = "direct" },
+  { char = "コ", codepoint = "U+30B3", status = "descriptive", source_char = "彐", source_svg_file = "24400.svg", stroke_indices = [0, 2], strokes = [
+    "M 724 181 Q 767 470 828 581 Q 841 594 836 610 Q 826 629 751 664 Q 729 674 712 669 Q 531 632 309 609 Q 278 608 292 588 Q 308 572 333 565 Q 364 555 388 565 Q 682 625 708 606 Q 724 596 724 554 Q 706 400 661 182 C 655 153 719 151 724 181 Z",
+    "M 661 182 Q 442 142 268 132 Q 238 131 255 104 Q 264 91 278 85 Q 294 81 313 83 Q 454 108 755 120 Q 771 121 774 134 Q 775 146 732 177 Q 728 180 724 181 L 661 182 Z",
+  ], note = "コ-shape (彐 without its middle horizontal) composed from 彐's 1st and 3rd strokes as fetched from makemeahanzi/graphics.txt." },
 ]
 
 # ============================================================
