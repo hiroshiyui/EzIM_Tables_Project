@@ -275,6 +275,11 @@ roots = [
 key = "d"
 roots = [
   { char = "木", codepoint = "U+6728", svg_char = "木", svg_file = "26408.svg", status = "direct" },
+  { char = "朩", codepoint = "U+6729", status = "descriptive", source_char = "來", source_svg_file = "20358.svg", stroke_indices = [5, 6, 7], strokes = [
+    "M 514 401 Q 514 629 521 699 L 529 748 Q 532 764 537 779 Q 547 795 543 810 Q 536 820 476 857 Q 451 875 429 858 Q 423 852 430 836 Q 464 784 466 731 L 468 688 Q 471 565 468 469 L 466 359 Q 462 167 443 90 Q 425 29 449 -30 Q 450 -34 453 -40 Q 460 -59 469 -63 Q 476 -70 483 -61 Q 492 -57 503 -34 Q 513 -7 512 26 Q 511 69 513 367 L 514 401 Z",
+    "M 468 469 Q 366 283 129 119 Q 113 109 96 96 Q 83 83 93 81 Q 102 75 116 81 Q 272 130 421 305 Q 433 321 448 337 Q 458 350 466 359 C 485 382 483 495 468 469 Z",
+    "M 513 367 Q 619 243 751 115 Q 773 93 809 98 Q 927 111 964 120 Q 974 124 976 129 Q 976 135 959 142 Q 784 187 723 233 Q 626 303 514 401 C 491 421 493 390 513 367 Z",
+  ], note = "朩 (tree-without-top: 丨 + 丿 + 乀) composed from 來's 6th–8th strokes as fetched from makemeahanzi/graphics.txt." },
 ]
 
 [[keys]]
@@ -287,6 +292,7 @@ roots = [
 key = "g"
 roots = [
   { char = "土", codepoint = "U+571F", svg_char = "土", svg_file = "22303.svg", status = "direct" },
+  { char = "士", codepoint = "U+58EB", svg_char = "士", svg_file = "22763.svg", status = "direct" },
 ]
 
 [[keys]]
@@ -299,6 +305,10 @@ roots = [
 key = "j"
 roots = [
   { char = "十", codepoint = "U+5341", svg_char = "十", svg_file = "21313.svg", status = "direct" },
+  { char = "𠂇", codepoint = "U+20087", status = "descriptive", source_char = "左", source_svg_file = "24038.svg", stroke_indices = [0, 1], strokes = [
+    "M 490 526 Q 583 542 681 558 Q 754 571 765 581 Q 775 590 771 599 Q 764 612 733 621 Q 700 630 667 618 Q 591 596 508 576 L 451 565 Q 369 553 276 547 Q 236 543 264 523 Q 309 495 369 506 Q 400 512 433 516 L 490 526 Z",
+    "M 433 516 Q 337 284 144 108 Q 66 45 65 37 Q 64 31 81 39 Q 283 127 406 351 Q 455 439 490 526 L 508 576 Q 508 577 509 578 Q 534 651 543 708 Q 547 741 567 773 Q 582 794 560 807 Q 530 828 490 837 Q 471 841 461 835 Q 454 828 461 810 Q 506 729 451 565 L 433 516 Z",
+  ], note = "𠂇 (hand-top: 一 + 丿, the top of 左/右/有/友) composed from 左's 1st–2nd strokes as fetched from makemeahanzi/graphics.txt." },
 ]
 
 [[keys]]
@@ -324,6 +334,9 @@ roots = [
 key = "'"
 roots = [
   { char = "⺃", codepoint = "U+2E83", svg_char = "乙", svg_file = "20057.svg", status = "fallback", note = "CJK radical 'second two' not in makemeahanzi; use 乙 (U+4E59)." },
+  { char = "斷", codepoint = "U+65B7", status = "descriptive", source_char = "斷", source_svg_file = "26039.svg", stroke_indices = [13], strokes = [
+    "M 190 699 Q 194 712 183 726 Q 173 736 143 752 Q 121 764 113 756 Q 106 749 113 734 Q 131 698 132 633 Q 136 393 113 170 Q 112 131 88 95 Q 78 79 88 59 Q 97 38 107 29 Q 117 22 135 35 Q 213 98 460 119 Q 482 120 483 131 Q 482 144 453 162 Q 437 174 352 149 Q 229 127 183 113 Q 173 109 169 113 Q 162 114 161 133 Q 174 343 181 609 Q 182 664 190 699 Z",
+  ], note = "L-shape enclosure of 㡭 (left radical of 斷), composed from 斷's 14th stroke as fetched from makemeahanzi/graphics.txt. Labeled as 斷 (a partial-glyph rendering of the same character)." },
 ]
 
 # ============================================================
@@ -334,6 +347,10 @@ roots = [
 key = "z"
 roots = [
   { char = "辶", codepoint = "U+8FB6", svg_char = "辶", svg_file = "36790.svg", status = "direct" },
+  { char = "廴", codepoint = "U+5EF4", status = "descriptive", source_char = "建", source_svg_file = "24314.svg", stroke_indices = [6, 7], strokes = [
+    "M 297 226 Q 319 278 344 352 Q 357 383 377 399 Q 386 406 378 421 Q 371 431 332 450 Q 322 460 297 448 Q 282 447 267 441 Q 257 438 251 444 Q 247 451 266 490 Q 333 611 368 629 Q 390 642 374 660 Q 343 685 314 691 Q 298 695 278 679 Q 257 663 206 644 Q 151 626 127 630 Q 114 631 110 623 Q 106 616 117 609 Q 156 587 185 596 Q 221 603 265 624 Q 277 628 279 625 Q 286 612 217 478 Q 210 456 190 437 Q 177 427 180 414 Q 184 402 190 396 Q 203 383 222 395 Q 303 438 298 387 Q 295 380 294 370 Q 279 291 259 248 L 245 220 Q 197 135 87 54 Q 75 44 85 38 Q 127 38 222 121 Q 258 158 284 199 L 297 226 Z",
+    "M 284 199 Q 302 189 322 177 Q 487 60 694 -32 Q 736 -59 942 5 Q 955 12 957 21 Q 960 31 936 30 Q 854 40 764 44 Q 568 56 297 226 L 259 248 Q 183 305 101 290 Q 100 290 98 289 Q 88 283 93 274 Q 100 264 112 264 Q 170 261 241 223 Q 242 222 245 220 L 284 199 Z",
+  ], note = "廴 (long-stride radical) composed from 建's last two strokes (7th–8th) as fetched from makemeahanzi/graphics.txt. The original request was 7th–9th, but 建 only has 8 strokes in makemeahanzi." },
 ]
 
 [[keys]]
