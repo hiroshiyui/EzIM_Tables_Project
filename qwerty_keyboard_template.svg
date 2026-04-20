@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  QWERTY keyboard template for EZ root rendering.
+
+  Layout: 5 rows × 15 units (1u = 60px).
+    Row 0: ` 1 2 3 4 5 6 7 8 9 0 - =  Backspace(2u)
+    Row 1: Tab(1.5u) Q W E R T Y U I O P [ ] \(1.5u)
+    Row 2: CapsLock(1.75u) A S D F G H J K L ; '  Enter(2.25u)
+    Row 3: Shift(2.25u) Z X C V B N M , . /  Shift(2.75u)
+    Row 4: Ctrl(1.5u) Alt(1.5u) Space(9u) Alt(1.5u) Ctrl(1.5u)
+
+  Each key is a <g data-keycode="..."> group containing a <rect> body
+  and a <text> label.  data-keycode values:
+    - printable keys: the literal unshifted character (matches the
+      [[keys]].key field used in roots_image_definition.toml)
+    - modifiers:      KeyboardEvent.code-style names
+      (Backspace, Tab, CapsLock, Enter, ShiftLeft, ShiftRight,
+       ControlLeft, ControlRight, AltLeft, AltRight, Space)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 320" width="920" height="320">
+  <style>
+    .key rect { fill: #ffffff; stroke: #222222; stroke-width: 1.5; }
+    .key text {
+      font-family: "DejaVu Sans", "Helvetica", sans-serif;
+      font-size: 22px;
+      fill: #222222;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .key.mod text { font-size: 14px; }
+    .key.mod rect { fill: #f0f0f0; }
+  </style>
+
+  <!-- Row 0: number row -->
+  <g class="key" data-keycode="`" transform="translate(10,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">`</text></g>
+  <g class="key" data-keycode="1" transform="translate(70,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">1</text></g>
+  <g class="key" data-keycode="2" transform="translate(130,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">2</text></g>
+  <g class="key" data-keycode="3" transform="translate(190,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">3</text></g>
+  <g class="key" data-keycode="4" transform="translate(250,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">4</text></g>
+  <g class="key" data-keycode="5" transform="translate(310,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">5</text></g>
+  <g class="key" data-keycode="6" transform="translate(370,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">6</text></g>
+  <g class="key" data-keycode="7" transform="translate(430,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">7</text></g>
+  <g class="key" data-keycode="8" transform="translate(490,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">8</text></g>
+  <g class="key" data-keycode="9" transform="translate(550,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">9</text></g>
+  <g class="key" data-keycode="0" transform="translate(610,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">0</text></g>
+  <g class="key" data-keycode="-" transform="translate(670,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">-</text></g>
+  <g class="key" data-keycode="=" transform="translate(730,10)"><rect width="56" height="56" rx="6"/><text x="28" y="28">=</text></g>
+  <g class="key mod" data-keycode="Backspace" transform="translate(790,10)"><rect width="116" height="56" rx="6"/><text x="58" y="28">⌫ Backspace</text></g>
+
+  <!-- Row 1: top alpha row -->
+  <g class="key mod" data-keycode="Tab" transform="translate(10,70)"><rect width="86" height="56" rx="6"/><text x="43" y="28">Tab</text></g>
+  <g class="key" data-keycode="q" transform="translate(100,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">Q</text></g>
+  <g class="key" data-keycode="w" transform="translate(160,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">W</text></g>
+  <g class="key" data-keycode="e" transform="translate(220,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">E</text></g>
+  <g class="key" data-keycode="r" transform="translate(280,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">R</text></g>
+  <g class="key" data-keycode="t" transform="translate(340,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">T</text></g>
+  <g class="key" data-keycode="y" transform="translate(400,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">Y</text></g>
+  <g class="key" data-keycode="u" transform="translate(460,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">U</text></g>
+  <g class="key" data-keycode="i" transform="translate(520,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">I</text></g>
+  <g class="key" data-keycode="o" transform="translate(580,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">O</text></g>
+  <g class="key" data-keycode="p" transform="translate(640,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">P</text></g>
+  <g class="key" data-keycode="[" transform="translate(700,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">[</text></g>
+  <g class="key" data-keycode="]" transform="translate(760,70)"><rect width="56" height="56" rx="6"/><text x="28" y="28">]</text></g>
+  <g class="key" data-keycode="\" transform="translate(820,70)"><rect width="86" height="56" rx="6"/><text x="43" y="28">\</text></g>
+
+  <!-- Row 2: home row -->
+  <g class="key mod" data-keycode="CapsLock" transform="translate(10,130)"><rect width="101" height="56" rx="6"/><text x="50.5" y="28">Caps Lock</text></g>
+  <g class="key" data-keycode="a" transform="translate(115,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">A</text></g>
+  <g class="key" data-keycode="s" transform="translate(175,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">S</text></g>
+  <g class="key" data-keycode="d" transform="translate(235,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">D</text></g>
+  <g class="key" data-keycode="f" transform="translate(295,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">F</text></g>
+  <g class="key" data-keycode="g" transform="translate(355,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">G</text></g>
+  <g class="key" data-keycode="h" transform="translate(415,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">H</text></g>
+  <g class="key" data-keycode="j" transform="translate(475,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">J</text></g>
+  <g class="key" data-keycode="k" transform="translate(535,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">K</text></g>
+  <g class="key" data-keycode="l" transform="translate(595,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">L</text></g>
+  <g class="key" data-keycode=";" transform="translate(655,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">;</text></g>
+  <g class="key" data-keycode="'" transform="translate(715,130)"><rect width="56" height="56" rx="6"/><text x="28" y="28">'</text></g>
+  <g class="key mod" data-keycode="Enter" transform="translate(775,130)"><rect width="131" height="56" rx="6"/><text x="65.5" y="28">Enter ↵</text></g>
+
+  <!-- Row 3: bottom alpha row -->
+  <g class="key mod" data-keycode="ShiftLeft" transform="translate(10,190)"><rect width="131" height="56" rx="6"/><text x="65.5" y="28">⇧ Shift</text></g>
+  <g class="key" data-keycode="z" transform="translate(145,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">Z</text></g>
+  <g class="key" data-keycode="x" transform="translate(205,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">X</text></g>
+  <g class="key" data-keycode="c" transform="translate(265,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">C</text></g>
+  <g class="key" data-keycode="v" transform="translate(325,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">V</text></g>
+  <g class="key" data-keycode="b" transform="translate(385,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">B</text></g>
+  <g class="key" data-keycode="n" transform="translate(445,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">N</text></g>
+  <g class="key" data-keycode="m" transform="translate(505,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">M</text></g>
+  <g class="key" data-keycode="," transform="translate(565,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">,</text></g>
+  <g class="key" data-keycode="." transform="translate(625,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">.</text></g>
+  <g class="key" data-keycode="/" transform="translate(685,190)"><rect width="56" height="56" rx="6"/><text x="28" y="28">/</text></g>
+  <g class="key mod" data-keycode="ShiftRight" transform="translate(745,190)"><rect width="161" height="56" rx="6"/><text x="80.5" y="28">⇧ Shift</text></g>
+
+  <!-- Row 4: modifiers + space -->
+  <g class="key mod" data-keycode="ControlLeft" transform="translate(10,250)"><rect width="86" height="56" rx="6"/><text x="43" y="28">Ctrl</text></g>
+  <g class="key mod" data-keycode="AltLeft" transform="translate(100,250)"><rect width="86" height="56" rx="6"/><text x="43" y="28">Alt</text></g>
+  <g class="key mod" data-keycode="Space" transform="translate(190,250)"><rect width="536" height="56" rx="6"/><text x="268" y="28">空　白</text></g>
+  <g class="key mod" data-keycode="AltRight" transform="translate(730,250)"><rect width="86" height="56" rx="6"/><text x="43" y="28">Alt</text></g>
+  <g class="key mod" data-keycode="ControlRight" transform="translate(820,250)"><rect width="86" height="56" rx="6"/><text x="43" y="28">Ctrl</text></g>
+</svg>
