@@ -38,11 +38,17 @@
 #
 # Composite entries use these extra fields:
 #   components — ordered list of component glyphs; painted in order so later
-#                items appear on top:
-#                  char      — the component glyph
-#                  svg_file  — its makemeahanzi svg filename
-#                  transform — optional SVG transform applied to this component
-#                              (evaluated inside the flipped outer group).
+#                items appear on top. Each component is sourced EITHER from a
+#                makemeahanzi glyph or from inline strokes (descriptive-style):
+#                  char            — the component glyph (optional label)
+#                  svg_file        — makemeahanzi svg filename (omit when
+#                                   using `strokes`)
+#                  source_char     — donor character when using `strokes`
+#                  stroke_indices  — indices into donor's graphics.txt strokes
+#                  strokes         — inline SVG path `d` values
+#                  transform       — optional SVG transform applied to this
+#                                   component (evaluated inside the flipped
+#                                   outer group).
 
 [meta]
 primary_source   = "ezsource12-3/header/gcin_ez_header.txt"
@@ -376,13 +382,25 @@ roots = [
 key = "b"
 roots = [
   { char = "月", codepoint = "U+6708", svg_char = "月", svg_file = "26376.svg", status = "direct" },
-  { char = "鬥", codepoint = "U+9B25", svg_char = "鬥", svg_file = "39717.svg", status = "direct" },
+  { char = "冈", codepoint = "U+5188", status = "composite", components = [
+    { source_char = "同", stroke_indices = [0, 1], strokes = [
+      "M 282 732 Q 258 751 232 761 Q 222 762 214 754 Q 210 747 218 735 Q 276 576 226 266 Q 216 215 198 162 Q 188 134 193 111 Q 202 72 215 58 Q 227 42 239 57 Q 267 90 279 237 Q 273 249 289 563 Q 293 650 299 687 C 303 717 303 717 282 732 Z",
+      "M 299 687 Q 306 687 314 689 Q 477 729 676 757 Q 703 763 716 747 Q 732 740 739 667 Q 761 424 753 148 Q 753 108 738 96 Q 720 83 631 99 Q 612 102 615 91 Q 616 82 631 77 Q 712 28 754 -11 Q 779 -33 794 -29 Q 807 -25 819 8 Q 835 60 831 135 Q 804 514 803 654 Q 802 699 815 726 Q 828 751 816 764 Q 804 780 749 807 Q 727 817 705 812 Q 543 758 282 732 C 252 729 270 681 299 687 Z",
+    ] },
+    { char = "乂", svg_file = "20034.svg", transform = "translate(256 256) scale(0.5)" },
+  ], note = "冂-frame (同's 1st–2nd strokes) with a half-scale 乂 centered inside." },
+  { char = "亅", codepoint = "U+4E85", status = "descriptive", source_char = "剛", source_svg_file = "21083.svg", stroke_indices = [9], strokes = [
+    "M 808 719 Q 812 682 813 123 Q 812 99 800 90 Q 799 90 734 104 Q 701 120 702 108 Q 703 101 723 84 Q 781 27 796 -3 Q 812 -39 827 -41 Q 843 -42 859 -7 Q 878 41 879 118 Q 860 362 865 608 Q 868 699 881 747 Q 897 778 840 801 Q 804 820 785 813 Q 766 806 783 782 Q 805 754 808 719 Z",
+  ], note = "亅 (vertical-hook of 刂) composed from 剛's last stroke as fetched from makemeahanzi/graphics.txt." },
 ]
 
 [[keys]]
 key = "n"
 roots = [
   { char = "弓", codepoint = "U+5F13", svg_char = "弓", svg_file = "24339.svg", status = "direct" },
+  { char = "万", codepoint = "U+4E07", status = "descriptive", source_char = "万", source_svg_file = "19975.svg", stroke_indices = [1], strokes = [
+    "M 480 484 Q 525 466 640 466 Q 664 469 673 456 Q 683 437 668 400 Q 634 252 605 192 Q 583 143 564 130 Q 540 105 502 124 Q 469 134 427 152 Q 409 156 411 149 Q 412 139 431 125 Q 476 79 500 44 Q 512 20 530 20 Q 546 19 576 36 Q 613 64 640 120 Q 671 184 721 356 Q 734 398 756 420 Q 775 433 774 448 Q 773 464 704 511 Q 682 526 660 515 Q 579 500 494 515 C 464 519 451 493 480 484 Z",
+  ], note = "Horizontal-turn-hook stroke (橫折鉤, the box-hook enclosure) composed from 万's 2nd stroke as fetched from makemeahanzi/graphics.txt. Labeled as 万 (a partial-glyph rendering of the same character)." },
 ]
 
 [[keys]]
@@ -395,6 +413,10 @@ roots = [
 key = ","
 roots = [
   { char = "⼃", codepoint = "U+2F03", svg_char = "丿", svg_file = "20031.svg", status = "fallback", note = "Kangxi radical SLASH not in makemeahanzi; use 丿 (U+4E3F)." },
+  { char = "夕", codepoint = "U+5915", status = "descriptive", source_char = "然", source_svg_file = "28982.svg", stroke_indices = [0, 1], strokes = [
+    "M 321 613 Q 343 644 368 683 Q 386 717 402 732 Q 411 742 406 755 Q 402 767 375 787 Q 350 803 332 803 Q 314 802 322 781 Q 343 742 268 616 Q 234 558 185 493 Q 176 483 174 477 Q 171 467 185 470 Q 218 476 312 600 L 321 613 Z",
+    "M 312 600 Q 322 588 353 592 Q 423 605 428 595 Q 434 582 416 530 Q 401 473 344 396 Q 290 314 196 232 Q 174 217 194 219 Q 221 222 267 253 Q 315 284 365 348 Q 426 427 472 528 Q 494 577 509 591 Q 521 601 515 612 Q 511 622 461 642 Q 449 646 429 636 Q 398 623 321 613 C 293 609 293 609 312 600 Z",
+  ], note = "夕 (evening) composed from 然's 1st–2nd strokes as fetched from makemeahanzi/graphics.txt." },
 ]
 
 [[keys]]
@@ -403,6 +425,9 @@ roots = [
   { char = "㇏", codepoint = "U+31CF", status = "descriptive", source_char = "人", source_svg_file = "20154.svg", stroke_indices = [1], strokes = [
     "M 462 456 Q 480 423 575 292 Q 666 171 733 101 Q 764 67 793 69 Q 881 75 958 79 Q 991 80 992 89 Q 993 98 956 112 Q 772 178 740 205 Q 617 304 490 466 Q 481 476 475 485 C 457 509 447 482 462 456 Z",
   ], note = "㇏ (CJK stroke N, falling-right) composed from 人's 2nd stroke as fetched from makemeahanzi/graphics.txt." },
+  { char = "發", codepoint = "U+767C", status = "descriptive", source_char = "發", source_svg_file = "30332.svg", stroke_indices = [0], strokes = [
+    "M 309 496 Q 364 575 430 709 Q 439 728 448 738 Q 461 748 453 757 Q 446 767 412 779 Q 393 788 352 768 Q 307 752 237 741 Q 225 740 225 732 Q 224 726 237 720 Q 280 701 303 711 Q 361 736 368 736 Q 378 732 368 713 Q 325 616 285 548 L 269 522 Q 185 401 58 304 Q 45 294 53 291 Q 63 290 80 298 Q 177 347 257 432 Q 275 451 295 477 L 309 496 Z",
+  ], note = "Top-left sweep of 癶 (the 發 header) composed from 發's 1st stroke as fetched from makemeahanzi/graphics.txt. Labeled as 發 (a partial-glyph rendering of the same character)." },
 ]
 
 [[keys]]

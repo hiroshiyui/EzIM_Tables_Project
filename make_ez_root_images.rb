@@ -114,15 +114,23 @@ def process_root(key, index, root)
     body_parts = []
     component_labels = []
     components.each do |comp|
-      src = File.join(SVG_SRC_DIR, comp["svg_file"].to_s)
-      unless File.exist?(src)
-        warn "[skip] key=#{key.inspect} root=#{root_char}: component source not found (#{src})"
-        return
-      end
+      paths =
+        if comp["strokes"]
+          Array(comp["strokes"])
+        elsif comp["svg_file"]
+          src = File.join(SVG_SRC_DIR, comp["svg_file"].to_s)
+          unless File.exist?(src)
+            warn "[skip] key=#{key.inspect} root=#{root_char}: component source not found (#{src})"
+            return
+          end
+          extract_fill_paths(src)
+        else
+          warn "[skip] key=#{key.inspect} root=#{root_char}: component has neither svg_file nor strokes"
+          return
+        end
 
-      paths = extract_fill_paths(src)
       if paths.empty?
-        warn "[skip] key=#{key.inspect} root=#{root_char}: no fill paths in #{src}"
+        warn "[skip] key=#{key.inspect} root=#{root_char}: component yielded no paths"
         return
       end
 
@@ -133,7 +141,7 @@ def process_root(key, index, root)
                     else
                       %(      <g transform="#{transform}">\n#{paths_xml}\n      </g>)
                     end
-      component_labels << comp["char"].to_s
+      component_labels << (comp["char"] || comp["source_char"]).to_s
     end
 
     svg = SVG_HEADER + body_parts.join("\n") + "\n" + SVG_FOOTER
