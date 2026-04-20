@@ -1,0 +1,100 @@
+### 版權聲明:
+###  
+### 本輸入法表格(輕鬆輸入法小型詞庫版) 乃根據《輕鬆資訊「輕鬆輸入法大詞庫」公眾授權書》的規定，
+### 以 GPL V2.0 或更新的版本所釋出，在遵守該授權書的規定下，
+### 可以修改、複製及散佈本輸入法表格，唯本輸入法表格卻不包含任何擔保；
+### 且修改後的輸入法表格中若有任何錯誤，皆與原作者無關。
+### 如有需要，請參閱 《輕鬆資訊「輕鬆輸入法大詞庫」公眾授權書》
+### 及 GNU GENERAL PUBLIC LICENSE 以了解更詳細的規定。
+###
+### 本輸入法表格為 xcin-2.3 的 「ezsmall.cin」（小型詞庫版）的修改版本。
+###
+###
+### Woodman Tuen <wmtuen@gmail.com>, 25-10-2008
+###
+###
+%gen_inp
+%ename ezsmall
+%cname 輕鬆小詞庫
+%selkey 1234567890
+%setting begin
+        AutoCompose "No"
+        WildEnable "No"
+        SpaceReset "No"
+        AutoUpChar "Yes"
+        SpaceAutoUp "No"
+        SelectKeyShift "No"
+        AutoFullUp "Yes"
+        SpaceIgnore "No"
+        EndKey "No"
+        DisableSelectList "None"
+%setting end
+%keyname begin
+! ！
+" “
+# ＃
+$ ＄
+& ＆
+' ⺃
+( （
+) ）
+* ＊
++ ＋
+, ⼃
+- 儿
+. ㇏
+/ ⼛
+0 鳥
+1 ⼁
+2 車
+3 糸
+4 言
+5 貝
+6 雨
+7 ⼧
+8 八
+9 耳
+: ：
+; 寸
+< ＜
+= 母
+> ＞
+? ？
+a 日
+b 月
+c 金
+d 木
+e 水
+f 火
+g 土
+h 竹
+i 戈
+j 十
+k 大
+l 中
+m 一
+n 弓
+o 人
+p 心
+q 手
+r 口
+s 尸
+t 廾
+u 山
+v 女
+w 田
+x 乂
+y ⼂
+z 辶
+[ ⼕
+\ 的
+] ］
+^ ︿
+_ ＿
+` 厂
+~ ～
+{ 【
+| ｜
+} 】
+%keyname end
+%chardef begin

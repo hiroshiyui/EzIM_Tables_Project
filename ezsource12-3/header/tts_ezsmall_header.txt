@@ -1,0 +1,162 @@
+﻿[System]
+LangId = LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
+GuidProfile={9819D3C9-CE74-4FE1-8C96-E055E0107D66}
+Description="中文 (繁體) - 輕鬆小詞庫"
+Display Description="中文 (繁體) - 輕鬆小詞庫"
+IconIndex=ICON_EASY
+
+[Configuration]
+CandidateListIndex=1-9
+CandidateList.Phrase.Modifier=TF_MOD_SHIFT
+CandidateList.Phrase.Title="@%ProgramFiles%\Windows NT\TableTextService\TableTextService.dll,-80"
+Composition.ConversionOnlyOneItemOnConvert=1
+CandidateWindow.Width=13
+ShowIncrementalCandidateImmediately=1
+
+[PreservedKey]
+GuidImeMode={98213494-367A-4855-90A1-97D917E3EC3D}
+KeyDefineImeMode=VK_SHIFT, TF_MOD_ON_KEYUP_SHIFT_ONLY
+DescriptionImeMode="@%ProgramFiles%\Windows NT\TableTextService\TableTextService.dll,-20"
+ImeMode=1
+
+GuidDoubleSingleByte={F1101BB8-CD65-4ceb-B5BD-8ECDD574D1D0}
+KeyDefineDoubleSingleByte=VK_SPACE, TF_MOD_SHIFT
+DescriptionDoubleSingleByte="@%ProgramFiles%\Windows NT\TableTextService\TableTextService.dll,-23"
+DoubleSingleByte=0
+
+[LanguageBar]
+GuidImeMode={3aa3c23e-1b76-4d86-a23e-c82f5f4081c0}
+DescriptionImeMode="Conversion mode"
+TooltipImeMode="@%ProgramFiles%\Windows NT\TableTextService\TableTextService.dll,-20"
+EnableImeMode=1
+ImeModeOnIconIndex=ICON_IME_MODE_ON
+ImeModeOffIconIndex=ICON_IME_MODE_OFF
+
+GuidDoubleSingleByte={8fc607ca-abbe-438f-80e7-c8e007780dfc}
+DescriptionDoubleSingleByte="Character width"
+TooltipDoubleSingleByte="@%ProgramFiles%\Windows NT\TableTextService\TableTextService.dll,-23"
+EnableDoubleSingleByte=1
+DoubleSingleByteOnIconIndex=ICON_DOUBLE_SINGLE_BYTE_ON
+DoubleSingleByteOffIconIndex=ICON_DOUBLE_SINGLE_BYTE_OFF
+
+[Profile]
+KeystrokeFile  ="%ProgramFiles%\Windows NT\TableTextService\TableTextServiceEasySmall.txt"
+RadicalFile    ="%ProgramFiles%\Windows NT\TableTextService\TableTextServiceEasySmall.txt"
+DictionaryFile ="%ProgramFiles%\Windows NT\TableTextService\TableTextServiceEasySmall.txt"
+PhraseFile     ="%ProgramFiles%\Windows NT\TableTextService\TableTextServiceEasySmall.txt"
+SymbolFile     ="%ProgramFiles%\Windows NT\TableTextService\TableTextServiceEasySmall.txt"
+DirectInputFile="%ProgramFiles%\Windows NT\TableTextService\TableTextServiceEasySmall.txt"
+
+[Keystroke.Composition]
+VK_0,          0  = INPUT        // 0
+VK_1,          0  = INPUT        // 1
+VK_2,          0  = INPUT        // 2
+VK_3,          0  = INPUT        // 3
+VK_4,          0  = INPUT        // 4
+VK_5,          0  = INPUT        // 5
+VK_6,          0  = INPUT        // 6
+VK_7,          0  = INPUT        // 7
+VK_8,          0  = INPUT        // 8
+VK_9,          0  = INPUT        // 9
+VK_A,          0  = INPUT        // A
+VK_B,          0  = INPUT        // B
+VK_C,          0  = INPUT        // C
+VK_D,          0  = INPUT        // D
+VK_E,          0  = INPUT        // E
+VK_F,          0  = INPUT        // F
+VK_G,          0  = INPUT        // G
+VK_H,          0  = INPUT        // H
+VK_I,          0  = INPUT        // I
+VK_J,          0  = INPUT        // J
+VK_K,          0  = INPUT        // K
+VK_L,          0  = INPUT        // L
+VK_M,          0  = INPUT        // M
+VK_N,          0  = INPUT        // N
+VK_O,          0  = INPUT        // O
+VK_P,          0  = INPUT        // P
+VK_Q,          0  = INPUT        // Q
+VK_R,          0  = INPUT        // R
+VK_S,          0  = INPUT        // S
+VK_T,          0  = INPUT        // T
+VK_U,          0  = INPUT        // U
+VK_V,          0  = INPUT        // V
+VK_W,          0  = INPUT        // W
+VK_X,          0  = INPUT        // X
+VK_Y,          0  = INPUT        // Y
+VK_Z,          0  = INPUT        // Z
+VK_OEM_1,      0  = INPUT        // ;
+VK_OEM_2,      0  = INPUT        // /
+VK_OEM_3,      0  = INPUT        // `
+VK_OEM_4,      0  = INPUT        // [
+VK_OEM_5,      0  = INPUT        // \
+VK_OEM_6,      0  = INPUT        // ]
+VK_OEM_7,      0  = INPUT        // '
+VK_OEM_COMMA,  0  = INPUT        // ,
+VK_OEM_MINUS,  0  = INPUT        // -
+VK_OEM_PERIOD, 0  = INPUT        // .
+VK_OEM_PLUS,   0  = INPUT        // +
+VK_OEM_102,    0  = INPUT        // <
+VK_RETURN,     0  = CANCEL_TEXTSTORE_AND_INPUT
+VK_SPACE,      0  = MOVE_PAGE_DOWN
+
+[Keystroke.Candidate]
+VK_RETURN,     0  = CANCEL_TEXTSTORE_AND_INPUT
+
+[Keystroke.Candidate.Wildcard]
+VK_SPACE,      0  = MOVE_PAGE_DOWN
+
+[Radical]
+","="丿"
+"-"="儿"
+"."="ˋ"
+"/"="厶"
+"0"="鳥"
+"1"="丨"
+"2"="車"
+"3"="糸"
+"4"="言"
+"5"="貝"
+"6"="雨"
+"7"="冖"
+"8"="八"
+"9"="耳"
+";"="寸"
+"="="母"
+"a"="日"
+"b"="月"
+"c"="金"
+"d"="木"
+"e"="水"
+"f"="火"
+"g"="土"
+"h"="竹"
+"i"="戈"
+"j"="十"
+"k"="大"
+"l"="中"
+"m"="一"
+"n"="弓"
+"o"="人"
+"p"="心"
+"q"="手"
+"r"="口"
+"s"="尸"
+"t"="廾"
+"u"="山"
+"v"="女"
+"w"="田"
+"x"="乂"
+"y"="、"
+"z"="辶"
+"["="匚"
+"\"="的"
+"]"="］"
+"^"="︿"
+"_"="＿"
+"`"="厂"
+"~"="～"
+"{"="【"
+"|"="｜"
+"}"="】"
+
+[Text]

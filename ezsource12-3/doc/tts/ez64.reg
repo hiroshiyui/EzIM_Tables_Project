@@ -1,0 +1,20 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\CTF\TIP\{E429B25A-E5D3-4D1F-9BE3-0C608477E3A1}\LanguageProfile\0x00000404\{E09B245E-CDAA-49DD-8A2B-644565108314}]
+"Description"="中文 (繁體) - 輕鬆"
+"IconFile"="%ProgramFiles%\\Windows NT\\TableTextService\\Easy.ico"
+"IconIndex"=dword:00000000
+"Enable"=dword:00000000
+"Display Description"="中文 (繁體) - 輕鬆"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\TableTextService\0x00000404\{E09B245E-CDAA-49DD-8A2B-644565108314}]
+"SettingFile"="%ProgramFiles%\Windows NT\TableTextService\TableTextServiceEasy.txt"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\TableTextService\0x00000404\{E09B245E-CDAA-49DD-8A2B-644565108314}]
+"SettingFile"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,\
+  00,6c,00,65,00,73,00,28,00,78,00,38,00,36,00,29,00,25,00,5c,00,57,00,69,00,\
+  6e,00,64,00,6f,00,77,00,73,00,20,00,4e,00,54,00,5c,00,54,00,61,00,62,00,6c,\
+  00,65,00,54,00,65,00,78,00,74,00,53,00,65,00,72,00,76,00,69,00,63,00,65,00,\
+  5c,00,54,00,61,00,62,00,6c,00,65,00,54,00,65,00,78,00,74,00,53,00,65,00,72,\
+  00,76,00,69,00,63,00,65,00,45,00,61,00,73,00,79,00,2e,00,74,00,78,00,74,00,\
+  00,00

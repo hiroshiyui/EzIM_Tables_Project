@@ -1,0 +1,33 @@
+安裝方法如下:
+
+#######################################################
+
+32bit Vista/7
+
+#######################################################    
+
+1. 將 TableTextServiceEasySmall.txt 及 EasySmall.ico 複製到 
+   C:\Program Files\Windows NT\TableTextService 
+
+2. 匯入 ezsmall32.reg
+
+3. 在控制台中新增輸入法
+
+
+
+#######################################################
+
+64bit Vista/7
+
+#######################################################
+
+1. 將 TableTextServiceEasySmall.txt 及 Easy.ico 複製到 :
+   C:\Program Files\Windows NT\TableTextService
+
+                       及
+
+   C:\Program Files(x86)\Windows NT\TableTextService
+
+2. 匯入 ezsmall64.reg 
+
+3. 在控制台中新增輸入法

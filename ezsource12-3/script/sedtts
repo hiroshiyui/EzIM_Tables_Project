@@ -1,0 +1,12 @@
+#!/bin/bash
+cat script/cut_street | sed  -e 's/^/s\//g' -e 's/$/\/\/g/g' > street_tmp
+sed -f street_tmp maintable/ezbig.txt.table > maintmp_1.txt
+cat script/cut_symbol |sed  -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/^/s\//g' -e 's/$/\/\/g/g' > symbol_tmp
+sed -f symbol_tmp maintmp_1.txt > maintmp_2.txt
+cat maintmp_2.txt |sed -e 's/^*\t\*//g' -e 's/^*.*\t*.*//g' > maintmp_3.txt
+cat maintmp_3.txt | sed  '/^$/d' > maintmp_4.txt
+rm -rf maintmp_1.txt
+rm -rf maintmp_2.txt
+rm -rf maintmp_3.txt
+rm -rf street_tmp
+rm -rf symbol_tmp

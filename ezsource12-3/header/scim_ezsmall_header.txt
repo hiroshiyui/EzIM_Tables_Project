@@ -1,0 +1,191 @@
+### 版權聲明:
+###  
+### 本輸入法表格(輕鬆輸入法小型詞庫版) 乃根據《輕鬆資訊「輕鬆輸入法大詞庫」公眾授權書》的規定，
+### 以 GPL V2.0 或更新的版本所釋出，在遵守該授權書的規定下，
+### 可以修改、複製及散佈本輸入法表格，唯本輸入法表格卻不包含任何擔保；
+### 且修改後的輸入法表格中若有任何錯誤，皆與原作者無關。
+### 如有需要，請參閱 《輕鬆資訊「輕鬆輸入法大詞庫」公眾授權書》
+### 及 GNU GENERAL PUBLIC LICENSE 以了解更詳細的規定。
+###
+### 本輸入法表格為 xcin-2.3 的 「ezsmall.cin」（小型詞庫版）的修改版本。
+###
+###
+### Woodman Tuen <wmtuen@gmail.com>, 25-10-2008
+###
+###
+### File header must not be modified
+### This file must be encoded into UTF-8.
+SCIM_Generic_Table_Phrase_Library_TEXT
+VERSION_1_0
+
+### Begin Table definition.
+BEGIN_DEFINITION
+
+### An unique id to distinguish this table among others.
+### Use uuidgen to generate this kind of id.
+UUID = 3289d647-0468-41f9-af78-bc55f571ff1b
+
+### A unique number indicates the version of this file.
+### For example the last modified date of this file.
+### This number must be less than 2^32.
+SERIAL_NUMBER = 20081025
+
+ICON = @SCIM_ICONDIR@/EZ.png
+
+### The default name of this table
+NAME = Easy Small
+
+### The local names of this table 
+NAME.zh_CN = 轻松小词库
+NAME.zh_HK = 輕鬆小詞庫
+NAME.zh_SG = 轻松小词库
+NAME.zh_TW = 輕鬆小詞庫
+
+### Supported languages of this table
+LANGUAGES = zh_TW,zh_HK,zh_CN,zh_SG
+
+### The author of this table
+AUTHOR = Woodman Tuen <wmtuen@gmail.com>
+
+### Prompt string to be displayed in the status area.
+STATUS_PROMPT = 中
+
+### The Keyboard Layout used by this table. Unset or set to "Unknown" to accept any kind of layouts.
+KEYBOARD_LAYOUT = US_Default
+
+### If true then the first candidate phrase
+### will be selected automatically during inputing.
+AUTO_SELECT = TRUE
+
+### If true then a multi wildcard will be appended
+### at the end of inputing string automatically.
+AUTO_WILDCARD = FALSE
+
+### If true then the result string will be committed to client automatically.
+### This should be used with AUTO_SELECT = TRUE.
+AUTO_COMMIT = FALSE
+
+### If true then the inputed string will be automatically splitted during inputing.
+AUTO_SPLIT = FALSE
+
+### If true then the phrases' frequencies will be adjusted dynamically.
+DYNAMIC_ADJUST = FALSE
+
+### If true then the preedit area will be filled up by the current candidate phrase automatically.
+AUTO_FILL = FALSE
+
+### Whether to discard invalid key automatically.
+### This takes effact only when AUTO_FILL and AUTO_COMMIT is true.
+DISCARD_INVALID_KEY = FALSE
+
+### If true then the lookup table will always be shown if there is any candidate phrase.
+### Otherwise the lookup table won't be shown unless the user requires it by moving the preedit caret left.
+ALWAYS_SHOW_LOOKUP = TRUE
+
+### Use full width punctuation by default
+DEF_FULL_WIDTH_PUNCT = FALSE
+
+### Use full width letter by default
+DEF_FULL_WIDTH_LETTER = FALSE
+
+### The maxmium length of a key.
+MAX_KEY_LENGTH = 4
+
+### Valid input chars.
+VALID_INPUT_CHARS = !"$#&'()*+,-./0123456789:;<=>?[\]^`abcdefghijklmnopqrstuvwxyz{|}~
+
+### Single wildcard char, can have multiple chars.
+### SINGLE_WILDCARD_CHAR = @
+
+### Multi wildcard char.
+MULTI_WILDCARD_CHAR = %
+
+### The key strokes to split inputed string.
+### SPLIT_KEYS = space
+
+### The key strokes to commit the convert result to client.
+COMMIT_KEYS = space,Return
+
+### The key strokes to forward the inputed string to client.
+### FORWARD_KEYS = Return
+
+### The key strokes to select candidiate phrases.
+SELECT_KEYS = 1,2,3,4,5,6,7,8,9,0
+
+### The key strokes to page up the lookup table.
+PAGE_UP_KEYS = Page_Up
+
+### The key strokes to page down the lookup table.
+PAGE_DOWN_KEYS = Page_Down,space
+
+### Define the prompts of each valid input char.
+BEGIN_CHAR_PROMPTS_DEFINITION
+! ！
+" “
+# ＃
+$ ＄
+& ＆
+' ⺃
+( （
+) ）
+* ＊
++ ＋
+, ⼃
+- 儿
+. ㇏
+/ ⼛
+0 鳥
+1 ⼁
+2 車
+3 糸
+4 言
+5 貝
+6 雨
+7 ⼧
+8 八
+9 耳
+: ：
+; 寸
+< ＜
+= 母
+> ＞
+? ？
+a 日
+b 月
+c 金
+d 木
+e 水
+f 火
+g 土
+h 竹
+i 戈
+j 十
+k 大
+l 中
+m 一
+n 弓
+o 人
+p 心
+q 手
+r 口
+s 尸
+t 廾
+u 山
+v 女
+w 田
+x 乂
+y ⼂
+z 辶
+[ ⼕
+\ 的
+] ］
+^ ︿
+_ ＿
+` 厂
+~ ～
+{ 【
+| ｜
+} 】
+END_CHAR_PROMPTS_DEFINITION
+END_DEFINITION
+BEGIN_TABLE

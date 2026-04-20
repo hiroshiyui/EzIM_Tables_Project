@@ -1,0 +1,6 @@
+﻿[Symbol]
+
+[DirectInput]
+"\\"="的"
+
+[Phrase]

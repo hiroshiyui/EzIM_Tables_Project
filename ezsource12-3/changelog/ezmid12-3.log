@@ -1,0 +1,234 @@
+--- origtable/ezmid.orig-utf8.txt	2008-10-25 11:15:32.000000000 +0800
++++ maintable/ezmid.txt.table	2010-06-29 20:24:17.998046000 +0800
+@@ -458 +458 @@
+-()	（  ）
++()	（  ）
+@@ -8141,0 +8142 @@
++/m	叁
+@@ -14326 +14327 @@
+-37	參
++37	叁
+@@ -14986 +14987 @@
+-3rt	3 1/2"
++3rt	3 1/2"
+@@ -19504,3 +19505,3 @@
+-<<>>	《  》
+-<>	〈  〉
+-<>	＜  ＞
++<<>>	《  》
++<>	〈  〉
++<>	＜  ＞
+@@ -20136 +20137 @@
+-adr	A 磁碟機
++adr	A 磁碟機
+@@ -20326 +20327 @@
+-alt	Alt 鍵
++alt	Alt 鍵
+@@ -21260,2 +21261,2 @@
+-back	Backspace 鍵
+-back	Backspace (退位鍵)
++back	Backspace 鍵
++back	Backspace (退位鍵)
+@@ -21351 +21352 @@
+-bdr	B 磁碟機
++bdr	B 磁碟機
+@@ -21441 +21442 @@
+-big5	BIG-5 碼
++big5	BIG-5 碼
+@@ -21443 +21444 @@
+-big5	ＢＩＧ－５ 碼
++big5	ＢＩＧ－５ 碼
+@@ -22694,2 +22695,2 @@
+-copa	COPY A:*.*
+-copb	COPY B:*.*
++copa	COPY A:*.*
++copb	COPY B:*.*
+@@ -22699,2 +22700,2 @@
+-core	Corel Draw
+-core	Ｃｏｒｅｌ Ｄｒａｗ
++core	Corel Draw
++core	Ｃｏｒｅｌ Ｄｒａｗ
+@@ -22788 +22789 @@
+-ctrl	Ctrl 鍵
++ctrl	Ctrl 鍵
+@@ -23490 +23491 @@
+-db3	dBASE III
++db3	dBASE III
+@@ -23492,2 +23493,2 @@
+-db3p	dBASE III PLUS
+-db4	dBASE IV
++db3p	dBASE III PLUS
++db4	dBASE IV
+@@ -23880,2 +23881,2 @@
+-dir*	DIR *
+-dir.	DIR *.
++dir*	DIR *
++dir.	DIR *.
+@@ -23885 +23886 @@
+-disk	DISKCOPY A:B:
++disk	DISKCOPY A:B:
+@@ -26625,2 +26626,2 @@
+-ente	Enter 鍵
+-ente	Enter (執行鍵)
++ente	Enter 鍵
++ente	Enter (執行鍵)
+@@ -30387,7 +30388,7 @@
+-ie	Internet Explorer
+-ie3	Internet Explorer 3.0
+-ie3	IE 3.0
+-ie4	Internet Explorer 4.0
+-ie4	IE 4.0
+-ie5	Internet Explorer 5.0
+-ie5	IE 5.0
++ie	Internet Explorer
++ie3	Internet Explorer 3.0
++ie3	IE 3.0
++ie4	Internet Explorer 4.0
++ie4	IE 4.0
++ie5	Internet Explorer 5.0
++ie5	IE 5.0
+@@ -34384 +34385 @@
+-lot	LOTUS 1-2-3
++lot	LOTUS 1-2-3
+@@ -39480 +39481 @@
+-mrt	3 1/2"
++mrt	3 1/2"
+@@ -39542 +39543 @@
+-msc	MicroSoft C
++msc	MicroSoft C
+@@ -40302 +40303 @@
+-mxw8	5 1/4"
++mxw8	5 1/4"
+@@ -41064 +41065 @@
+-m`j	夏威夷 HI
++m`j	夏威夷 HI
+@@ -41070 +41071 @@
+-m`k	夏威夷 HI
++m`k	夏威夷 HI
+@@ -41613 +41614 @@
+-nu	Norton Utilities
++nu	Norton Utilities
+@@ -41616 +41617 @@
+-nu8	Norton Utilities 8.0
++nu8	Norton Utilities 8.0
+@@ -44922 +44923 @@
+-pe2	PE II
++pe2	PE II
+@@ -44926 +44927 @@
+-pe3	PE III
++pe3	PE III
+@@ -44928 +44929 @@
+-pe3	ＰＥ Ⅲ
++pe3	ＰＥ Ⅲ
+@@ -45227,4 +45228,4 @@
+-ppt	POWER POINT
+-ppt	Power Point
+-ppt	ＰＯＷＥＲ ＰＯＩＮＴ
+-ppt	Ｐｏｗｅｒ Ｐｏｉｎｔ
++ppt	POWER POINT
++ppt	Power Point
++ppt	ＰＯＷＥＲ ＰＯＩＮＴ
++ppt	Ｐｏｗｅｒ Ｐｏｉｎｔ
+@@ -46901,2 +46902,2 @@
+-qub	Quick BASIC
+-quc	Quick C
++qub	Quick BASIC
++quc	Quick C
+@@ -46912 +46913 @@
+-qup	Quick Pascal
++qup	Quick Pascal
+@@ -47955,2 +47956,2 @@
+-retu	Return 鍵
+-retu	Return (換行鍵)
++retu	Return 鍵
++retu	Return (換行鍵)
+@@ -49120 +49121 @@
+-shif	Shift 鍵
++shif	Shift 鍵
+@@ -49224,2 +49225,2 @@
+-spac	Space 鍵
+-spac	Space (空格鍵)
++spac	Space 鍵
++spac	Space (空格鍵)
+@@ -50449 +50450 @@
+-tab	TAB 鍵
++tab	TAB 鍵
+@@ -50826 +50827 @@
+-tdb	Table	(.DBF	檔案)
++tdb	Table  (.DBF 檔案)
+@@ -52569,2 +52570,2 @@
+-tub	Turbo	BASIC
+-tuc	Turbo	C
++tub	Turbo BASIC
++tuc	Turbo C
+@@ -52572 +52573 @@
+-tup	Turbo	Pascal
++tup	Turbo Pascal
+@@ -53983 +53984 @@
+-vbas	Visual	Basic
++vbas	Visual Basic
+@@ -54071 +54072 @@
+-vfp	Visual	FoxPro
++vfp	Visual FoxPro
+@@ -54486 +54487 @@
+-w,,	羅德島	RI
++w,,	羅德島 RI
+@@ -54985,6 +54986,6 @@
+-w95	Win	95
+-w95	Ｗｉｎ	９５
+-w95	Windows	95
+-w95	WINDOWS	95
+-w95	Ｗｉｎｄｏｗｓ	９５
+-w95	ＷＩＮＤＯＷＳ	９５
++w95	Win 95
++w95	Ｗｉｎ ９５
++w95	Windows 95
++w95	WINDOWS 95
++w95	Ｗｉｎｄｏｗｓ ９５
++w95	ＷＩＮＤＯＷＳ ９５
+@@ -54993,6 +54994,6 @@
+-w98	Win	98
+-w98	Ｗｉｎ	９８
+-w98	Windows	98
+-w98	WINDOWS	98
+-w98	Ｗｉｎｄｏｗｓ	９８
+-w98	ＷＩＮＤＯＷＳ	９８
++w98	Win 98
++w98	Ｗｉｎ ９８
++w98	Windows 98
++w98	WINDOWS 98
++w98	Ｗｉｎｄｏｗｓ ９８
++w98	ＷＩＮＤＯＷＳ ９８
+@@ -55339,4 +55340,4 @@
+-wint	Windows	NT
+-wint	WINDOWS	NT
+-wint	Ｗｉｎｄｏｗｓ	ＮＴ
+-wint	ＷＩＮＤＯＷＳ	ＮＴ
++wint	Windows NT
++wint	WINDOWS NT
++wint	Ｗｉｎｄｏｗｓ ＮＴ
++wint	ＷＩＮＤＯＷＳ ＮＴ
+@@ -62261,2 +62262,2 @@
+-[[]]	『  』
+-[]	「  」
++[[]]	『  』
++[]	「  」
+@@ -62997 +62998 @@
+-`',w	麻省	MA
++`',w	麻省 MA
+@@ -63003 +63004 @@
+-`'bw	麻省	MA
++`'bw	麻省 MA
+@@ -63451 +63452 @@
+-`d,w	麻省	MA
++`d,w	麻省 MA
+@@ -63455 +63456 @@
+-`dbw	麻省	MA
++`dbw	麻省 MA
+@@ -64448 +64449 @@
+-{}	【  】
++{}	【  】
+@@ -64451 +64452 @@
+-~	～
+\ 檔案末沒有 newline 字元
++~	～
