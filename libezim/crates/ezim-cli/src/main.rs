@@ -15,17 +15,20 @@ use std::process::ExitCode;
 
 use ezim_core::char_weights::CharWeights;
 use ezim_core::format::BinaryTable;
+use ezim_core::phrase_weights::PhraseWeights;
 use ezim_core::{EncodeError, HeadTail};
 
 const USAGE: &str = "\
 usage:
-  ezim info         <table.dat>           # print header & section sizes
-  ezim verify       <table.dat>           # full integrity walk
-  ezim encode       <table.dat> <string>  # encode a UTF-8 string per EZ rules
-  ezim pick         <table.dat> <char>    # show picker result for a single char
-  ezim lookup       <table.dat> <code>    # list all entries for a code
-  ezim weights-info <char-weights.dat>    # print header info for a weights file
-  ezim weights-rank <char-weights.dat> <char>   # print rank of a single char
+  ezim info                <table.dat>           # print header & section sizes
+  ezim verify              <table.dat>           # full integrity walk
+  ezim encode              <table.dat> <string>  # encode UTF-8 per EZ rules
+  ezim pick                <table.dat> <char>    # picker result for one char
+  ezim lookup              <table.dat> <code>    # entries for a code
+  ezim char-weights-info   <char-weights.dat>
+  ezim char-weights-rank   <char-weights.dat> <char>
+  ezim phrase-weights-info <phrase-weights.dat>
+  ezim phrase-weights-rank <phrase-weights.dat> <phrase>
 ";
 
 fn main() -> ExitCode {
@@ -36,8 +39,10 @@ fn main() -> ExitCode {
         [c, p, s] if c == "encode" => run_encode(p, s),
         [c, p, s] if c == "pick" => run_pick(p, s),
         [c, p, s] if c == "lookup" => run_lookup(p, s),
-        [c, p] if c == "weights-info" => run_weights_info(p),
-        [c, p, s] if c == "weights-rank" => run_weights_rank(p, s),
+        [c, p] if c == "char-weights-info" => run_char_weights_info(p),
+        [c, p, s] if c == "char-weights-rank" => run_char_weights_rank(p, s),
+        [c, p] if c == "phrase-weights-info" => run_phrase_weights_info(p),
+        [c, p, s] if c == "phrase-weights-rank" => run_phrase_weights_rank(p, s),
         _ => {
             eprint!("{USAGE}");
             return ExitCode::from(2);
@@ -139,7 +144,7 @@ fn run_pick(path: &str, s: &str) -> ezim_core::Result<()> {
     Ok(())
 }
 
-fn run_weights_info(path: &str) -> ezim_core::Result<()> {
+fn run_char_weights_info(path: &str) -> ezim_core::Result<()> {
     let cw = CharWeights::open(path)?;
     println!("file: {path}");
     println!("  n_entries     : {}", cw.n_entries());
@@ -153,7 +158,7 @@ fn run_weights_info(path: &str) -> ezim_core::Result<()> {
     Ok(())
 }
 
-fn run_weights_rank(path: &str, s: &str) -> ezim_core::Result<()> {
+fn run_char_weights_rank(path: &str, s: &str) -> ezim_core::Result<()> {
     let cw = CharWeights::open(path)?;
     let mut chars = s.chars();
     let ch = chars.next().ok_or_else(|| ezim_core::Error::Parse {
@@ -161,11 +166,33 @@ fn run_weights_rank(path: &str, s: &str) -> ezim_core::Result<()> {
         msg: "empty character argument".into(),
     })?;
     if chars.next().is_some() {
-        eprintln!("note: 'weights-rank' uses only the first character of the argument");
+        eprintln!("note: 'char-weights-rank' uses only the first character of the argument");
     }
     match cw.rank(ch) {
         Some(r) => println!("{ch}: rank #{r}"),
         None => println!("{ch}: not in weights table"),
+    }
+    Ok(())
+}
+
+fn run_phrase_weights_info(path: &str) -> ezim_core::Result<()> {
+    let pw = PhraseWeights::open(path)?;
+    println!("file: {path}");
+    println!("  n_entries     : {}", pw.n_entries());
+    println!("  source_hash_lo: 0x{:016x}", pw.source_hash_lo());
+    print!("  first 5       :");
+    for (text, rank) in pw.iter().take(5) {
+        print!(" {text}(#{rank})");
+    }
+    println!();
+    Ok(())
+}
+
+fn run_phrase_weights_rank(path: &str, phrase: &str) -> ezim_core::Result<()> {
+    let pw = PhraseWeights::open(path)?;
+    match pw.rank(phrase) {
+        Some(r) => println!("{phrase}: rank #{r}"),
+        None => println!("{phrase}: not in weights table"),
     }
     Ok(())
 }

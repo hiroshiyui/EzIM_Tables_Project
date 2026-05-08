@@ -8,6 +8,7 @@ pub mod char_weights;
 pub mod encoding;
 pub mod error;
 pub mod format;
+pub mod phrase_weights;
 pub mod source;
 
 pub use encoding::{EncodeError, HeadTail};
