@@ -100,6 +100,16 @@ bundle exec ruby build_dict.rb
 
 **注意**：CC BY-ND 3.0 TW 授權**禁止改作**。本專案為建立「字詞 → 輕鬆輸入法編碼」對照關係，僅引用原辭典之「字詞名」欄位做為查詢鍵，未改動或重新發布原辭典內容。若您要散布修改後之辭典內容，須另行取得教育部同意。
 
+### 教育部《八十五年常用語詞調查報告》詞頻總表（`85rest02.csv`）
+
+版權所有 © 中華民國教育部（Ministry of Education, R.O.C.）。
+
+來源：[政府資料開放平臺 ── 八十五年常用語詞調查報告——詞頻總表](https://data.nat.gov.tw/dataset/45518)。
+
+本資料集依政府資料開放平臺之開放資料授權條款公開釋出。引用時請標示：
+
+> 中華民國教育部（Ministry of Education, R.O.C.）。《八十五年常用語詞調查報告——詞頻總表》。資料來源：政府資料開放平臺，<https://data.nat.gov.tw/dataset/45518>。
+
 ### 本專案之整理成果
 
 `build_dict.rb`、`sync_ezbig.rb`、`sort_tables.rb` 與衍生之 `dict.csv` 同樣以 GNU GPL v2（或更新版本）授權發佈，以與輕鬆輸入法大詞庫之授權相容。
