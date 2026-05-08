@@ -1,0 +1,21 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/ezim-core",
+    "crates/ezim-table-builder",
+    "crates/ezim-cli",
+    "crates/ezim-capi",
+    "crates/ezim-session",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-only"
+authors = ["EzIM Tables Project contributors"]
+repository = "https://github.com/hiroshiyui/EzIM_Tables_Project"
+rust-version = "1.85"
+
+[workspace.dependencies]
+ezim-core = { path = "crates/ezim-core", version = "0.1.0" }
+ezim-session = { path = "crates/ezim-session", version = "0.1.0" }

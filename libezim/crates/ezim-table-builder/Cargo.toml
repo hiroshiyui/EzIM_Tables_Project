@@ -1,0 +1,16 @@
+[package]
+name = "ezim-table-builder"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+description = "Builds the binary EZ table (.dat) from ez.orig-utf8.txt."
+
+[[bin]]
+name = "ezim-table-builder"
+path = "src/main.rs"
+
+[dependencies]
+ezim-core = { workspace = true }

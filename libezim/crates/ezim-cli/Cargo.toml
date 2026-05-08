@@ -1,0 +1,16 @@
+[package]
+name = "ezim-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+description = "Developer CLI for inspecting EZ binary tables and trying lookups."
+
+[[bin]]
+name = "ezim"
+path = "src/main.rs"
+
+[dependencies]
+ezim-core = { workspace = true }
