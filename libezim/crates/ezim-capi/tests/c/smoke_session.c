@@ -36,10 +36,14 @@ static int32_t key_select(EzimSession *s, uint32_t idx_one_based) {
 }
 
 int main(int argc, char **argv) {
-    if (argc != 2) {
-        fprintf(stderr, "usage: %s <path-to-ez.dat>\n", argv[0]);
+    if (argc < 2 || argc > 4) {
+        fprintf(stderr,
+                "usage: %s <ez.dat> [char-weights.dat] [phrase-weights.dat]\n",
+                argv[0]);
         return 2;
     }
+    const char *char_weights_path = argc >= 3 ? argv[2] : NULL;
+    const char *phrase_weights_path = argc >= 4 ? argv[3] : NULL;
 
     EzimTable *t = NULL;
     if (ezim_table_open(argv[1], &t) != EZIM_OK) {
@@ -127,7 +131,34 @@ int main(int argc, char **argv) {
     ezim_session_cancel(s);
     CHECK(strlen(ezim_session_buffer(s)) == 0, "cancel clears buffer");
 
+    /* --- scenario 8: attach weights and re-rank candidates --- */
+    EzimCharWeights *cw = NULL;
+    EzimPhraseWeights *pw = NULL;
+    if (char_weights_path) {
+        EzimStatus stw = ezim_char_weights_open(char_weights_path, &cw);
+        CHECK(stw == EZIM_OK && cw != NULL, "open char-weights.dat");
+    }
+    if (phrase_weights_path) {
+        EzimStatus stw = ezim_phrase_weights_open(phrase_weights_path, &pw);
+        CHECK(stw == EZIM_OK && pw != NULL, "open phrase-weights.dat");
+    }
+    if (cw || pw) {
+        EzimStatus stw = ezim_session_attach_weights(s, cw, pw);
+        CHECK(stw == EZIM_OK, "attach weights to session");
+        /* Type a code that has multiple candidates and verify the first
+         * is the most-frequent one in the corpus. We use "8" → "八".
+         * 八 is rank 258 in 字頻; with weights attached it should still
+         * be first (it's the only candidate for "8"). */
+        key_char(s, '8');
+        const char *first = ezim_session_cand_at(s, 0);
+        CHECK(first != NULL && strcmp(first, "八") == 0,
+              "after attach: first candidate for \"8\" still 八");
+        ezim_session_cancel(s);
+    }
+
     ezim_session_free(s);
+    if (cw) ezim_char_weights_free(cw);
+    if (pw) ezim_phrase_weights_free(pw);
     ezim_table_free(t);
 
     if (failures > 0) {

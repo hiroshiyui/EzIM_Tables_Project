@@ -4,9 +4,12 @@ use std::ffi::CString;
 use std::os::raw::{c_char, c_int};
 use std::ptr;
 
+use ezim_core::char_weights::CharWeights;
 use ezim_core::format::BinaryTable;
+use ezim_core::phrase_weights::PhraseWeights;
 use ezim_session::{Key, Session};
 
+use crate::weights::{EzimCharWeights, EzimPhraseWeights};
 use crate::{
     set_last_error, EzimStatus, EzimTable, EZIM_ERR_INTERNAL, EZIM_ERR_INVALID, EZIM_OK,
 };
@@ -127,6 +130,48 @@ pub unsafe extern "C" fn ezim_session_free(s: *mut EzimSession) {
     if !s.is_null() {
         let _ = unsafe { Box::from_raw(s) };
     }
+}
+
+/// Attach (or detach) corpus-derived weight tables to a session. After
+/// this call, candidate lookups for the current and subsequent
+/// keystrokes order results by ascending corpus rank (lower = more
+/// frequent), with absent-from-corpus entries placed after ranked ones.
+///
+/// Pass `NULL` for either argument to leave that corpus unattached;
+/// passing `NULL` for both is equivalent to source-file order (the
+/// default for a freshly-created session).
+///
+/// # Safety
+/// `s` must be valid. If non-null, `cw` / `pw` must be valid handles
+/// returned by `ezim_char_weights_open` / `ezim_phrase_weights_open`
+/// and must outlive the session (or until this function is called
+/// again to replace them).
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn ezim_session_attach_weights(
+    s: *mut EzimSession,
+    cw: *const EzimCharWeights,
+    pw: *const EzimPhraseWeights,
+) -> EzimStatus {
+    if s.is_null() {
+        set_last_error("null session in ezim_session_attach_weights");
+        return EZIM_ERR_INVALID;
+    }
+    let sess = unsafe { &mut *s };
+    let cw_ref: Option<&'static CharWeights> = if cw.is_null() {
+        None
+    } else {
+        // SAFETY: caller upholds that `cw` outlives the session reuse.
+        Some(unsafe { &(*cw).inner_static_ref() })
+    };
+    let pw_ref: Option<&'static PhraseWeights> = if pw.is_null() {
+        None
+    } else {
+        // SAFETY: caller upholds that `pw` outlives the session reuse.
+        Some(unsafe { &(*pw).inner_static_ref() })
+    };
+    sess.inner.set_weights(cw_ref, pw_ref);
+    sess.refresh_view();
+    EZIM_OK
 }
 
 /// Drive the session with a single key event.

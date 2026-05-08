@@ -1,6 +1,8 @@
 use std::io::BufReader;
 
+use ezim_core::char_weights::{self, CharWeights};
 use ezim_core::format::{write, BinaryTable};
+use ezim_core::phrase_weights::{self, PhraseWeights};
 use ezim_core::SourceTable;
 use ezim_session::{Key, Session};
 
@@ -182,4 +184,74 @@ fn typing_a_phrase_code_yields_phrase_candidate() {
     assert_eq!(s.candidates(), &["比較".to_string()]);
     let out = s.handle_key(Key::Space);
     assert_eq!(out.commit, Some("比較".to_string()));
+}
+
+#[test]
+fn weights_reorder_candidates_by_ascending_rank() {
+    // SRC: code "''" maps to 比, 艷 in source-file order (比 first).
+    // Without weights, that ordering wins. With char weights that rank
+    // 艷 lower than 比, 艷 should jump ahead.
+    let bt = make_table();
+
+    // Build a CharWeights with 艷 higher-priority (lower rank) than 比.
+    let cw_bytes = char_weights::write(&[('艷', 1), ('比', 5)], b"src");
+    let cw = CharWeights::from_bytes(cw_bytes).unwrap();
+
+    let mut s = Session::new(&bt).with_weights(Some(&cw), None);
+    type_keys(&mut s, "''");
+    assert_eq!(
+        s.candidates(),
+        &["艷".to_string(), "比".to_string()],
+        "lower rank should win",
+    );
+}
+
+#[test]
+fn weights_place_absent_entries_after_ranked() {
+    // 七 has three rows in source order: code "76" (text "七"), "j'" "七", "m'" "七".
+    // The matching code is "76" so we test through "''" which has 比 (ranked)
+    // and 艷 (absent from corpus). 比 should come first.
+    let bt = make_table();
+    let cw_bytes = char_weights::write(&[('比', 3)], b"src");
+    let cw = CharWeights::from_bytes(cw_bytes).unwrap();
+
+    let mut s = Session::new(&bt).with_weights(Some(&cw), None);
+    type_keys(&mut s, "''");
+    assert_eq!(
+        s.candidates(),
+        &["比".to_string(), "艷".to_string()],
+        "absent (艷) should sort after ranked (比)",
+    );
+}
+
+#[test]
+fn phrase_weights_apply_to_multi_char_candidates() {
+    let bt = make_table();
+    // Make 比較 explicitly ranked.
+    let pw_bytes = phrase_weights::write(&[("比較", 1)], b"src");
+    let pw = PhraseWeights::from_bytes(pw_bytes).unwrap();
+
+    let mut s = Session::new(&bt).with_weights(None, Some(&pw));
+    type_keys(&mut s, "''2x");
+    assert_eq!(s.candidates(), &["比較".to_string()]);
+    // Sanity: phrase rank lookup worked end-to-end.
+    let out = s.handle_key(Key::Space);
+    assert_eq!(out.commit, Some("比較".to_string()));
+}
+
+#[test]
+fn set_weights_after_buffer_in_flight_re_sorts_candidates() {
+    let bt = make_table();
+    let mut s = Session::new(&bt);
+    type_keys(&mut s, "''");
+    assert_eq!(s.candidates(), &["比".to_string(), "艷".to_string()]);
+
+    let cw_bytes = char_weights::write(&[('艷', 1)], b"src");
+    let cw = CharWeights::from_bytes(cw_bytes).unwrap();
+    s.set_weights(Some(&cw), None);
+    assert_eq!(
+        s.candidates(),
+        &["艷".to_string(), "比".to_string()],
+        "set_weights must refresh ordering on the live buffer",
+    );
 }

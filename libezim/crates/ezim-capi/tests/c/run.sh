@@ -13,8 +13,22 @@ echo "==> cargo build"
 cargo build -q --release -p ezim-capi -p ezim-table-builder
 
 DAT="$WORKSPACE/target/release/ez.dat"
+CHAR_W="$WORKSPACE/target/release/char-weights.dat"
+PHRASE_W="$WORKSPACE/target/release/phrase-weights.dat"
+CHAR_CSV="$WORKSPACE/../85rest01.csv"
+PHRASE_CSV="$WORKSPACE/../85rest02.csv"
+
 echo "==> build ez.dat at $DAT"
 "$WORKSPACE/target/release/ezim-table-builder" build "$SRC_TABLE" "$DAT" >/dev/null
+
+if [[ -f "$CHAR_CSV" ]]; then
+    echo "==> build char-weights.dat at $CHAR_W"
+    "$WORKSPACE/target/release/ezim-table-builder" weights "$CHAR_CSV" "$CHAR_W" >/dev/null
+fi
+if [[ -f "$PHRASE_CSV" ]]; then
+    echo "==> build phrase-weights.dat at $PHRASE_W"
+    "$WORKSPACE/target/release/ezim-table-builder" phrase-weights "$PHRASE_CSV" "$PHRASE_W" >/dev/null
+fi
 
 LIBDIR="$WORKSPACE/target/release"
 HEADER="$WORKSPACE/headers"
@@ -43,4 +57,4 @@ echo "==> run smoke"
 
 echo
 echo "==> run smoke_session"
-"$SESS_BIN" "$DAT"
+"$SESS_BIN" "$DAT" "$CHAR_W" "$PHRASE_W"

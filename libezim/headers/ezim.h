@@ -54,8 +54,10 @@ const char *ezim_last_error(void);
  * Opaque handles
  * ------------------------------------------------------------------------- */
 
-typedef struct EzimTable    EzimTable;
-typedef struct EzimCandIter EzimCandIter;
+typedef struct EzimTable         EzimTable;
+typedef struct EzimCandIter      EzimCandIter;
+typedef struct EzimCharWeights   EzimCharWeights;
+typedef struct EzimPhraseWeights EzimPhraseWeights;
 
 /* -------------------------------------------------------------------------
  * Table lifecycle
@@ -130,6 +132,31 @@ const char *ezim_cand_next(EzimCandIter *it);
 void        ezim_cand_free(EzimCandIter *it);
 
 /* -------------------------------------------------------------------------
+ * Corpus weights (optional priors for candidate ordering)
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Open a `char-weights.dat` file produced by `ezim-table-builder weights`.
+ * On success, `*out` is a fresh handle the caller must free with
+ * `ezim_char_weights_free`.
+ *
+ * Returns: EZIM_OK | EZIM_ERR_INVALID | EZIM_ERR_IO | EZIM_ERR_FORMAT
+ */
+EzimStatus  ezim_char_weights_open(const char        *path,
+                                   EzimCharWeights  **out);
+void        ezim_char_weights_free(EzimCharWeights *cw);
+
+/**
+ * Open a `phrase-weights.dat` file produced by
+ * `ezim-table-builder phrase-weights`.
+ *
+ * Returns: EZIM_OK | EZIM_ERR_INVALID | EZIM_ERR_IO | EZIM_ERR_FORMAT
+ */
+EzimStatus  ezim_phrase_weights_open(const char          *path,
+                                     EzimPhraseWeights  **out);
+void        ezim_phrase_weights_free(EzimPhraseWeights *pw);
+
+/* -------------------------------------------------------------------------
  * Session API (state machine: preedit, candidates, paging)
  * ------------------------------------------------------------------------- */
 
@@ -158,6 +185,20 @@ EzimStatus  ezim_session_new(const EzimTable *t, EzimSession **out);
 
 /** Free a session handle. Safe to call with NULL. */
 void        ezim_session_free(EzimSession *s);
+
+/**
+ * Attach (or detach) corpus weight tables to an existing session. After
+ * this call, candidate lookups order results by ascending corpus rank
+ * (lower = more frequent), with absent-from-corpus entries sorted after
+ * ranked ones, ties broken by source-file order.
+ *
+ * Pass `NULL` for either argument to leave that corpus unattached. The
+ * `cw` and `pw` handles, if non-null, must outlive the session (or
+ * until this function is called again to replace them).
+ */
+EzimStatus  ezim_session_attach_weights(EzimSession             *s,
+                                        const EzimCharWeights   *cw,
+                                        const EzimPhraseWeights *pw);
 
 /**
  * Drive the session with a key event. Returns:

@@ -21,6 +21,7 @@ use std::ptr;
 use ezim_core::format::BinaryTable;
 
 pub mod session;
+pub mod weights;
 
 // ---------------------------------------------------------------------------
 // Versioning
