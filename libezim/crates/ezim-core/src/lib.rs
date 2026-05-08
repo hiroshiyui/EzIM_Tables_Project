@@ -4,6 +4,7 @@
 //! parsing the source table, the head/tail picker, the word-length-aware
 //! encoder, and (later) the binary `.dat` reader.
 
+pub mod char_weights;
 pub mod encoding;
 pub mod error;
 pub mod format;

@@ -1,8 +1,9 @@
-//! `ezim-table-builder` — build the binary EZ table from `ez.orig-utf8.txt`.
+//! `ezim-table-builder` — build the binary EZ table and aux data files.
 //!
 //! ```text
-//! ezim-table-builder stats <ez.orig-utf8.txt>
-//! ezim-table-builder build <ez.orig-utf8.txt> <out.dat>
+//! ezim-table-builder stats   <ez.orig-utf8.txt>
+//! ezim-table-builder build   <ez.orig-utf8.txt> <out.dat>
+//! ezim-table-builder weights <85rest01.csv> <char-weights.dat>
 //! ```
 //!
 //! For inspecting an existing `.dat` file, use the `ezim` CLI in the
@@ -13,6 +14,7 @@ use std::env;
 use std::fs;
 use std::process::ExitCode;
 
+use ezim_core::char_weights;
 use ezim_core::format;
 use ezim_core::SourceTable;
 
@@ -21,9 +23,10 @@ fn main() -> ExitCode {
     let result = match args.as_slice() {
         [cmd, p] if cmd == "stats" => run_stats(p),
         [cmd, src, out] if cmd == "build" => run_build(src, out),
+        [cmd, src, out] if cmd == "weights" => run_weights(src, out),
         _ => {
             eprintln!(
-                "usage:\n  ezim-table-builder stats <ez.orig-utf8.txt>\n  ezim-table-builder build <ez.orig-utf8.txt> <out.dat>"
+                "usage:\n  ezim-table-builder stats   <ez.orig-utf8.txt>\n  ezim-table-builder build   <ez.orig-utf8.txt> <out.dat>\n  ezim-table-builder weights <85rest01.csv> <char-weights.dat>"
             );
             return ExitCode::from(2);
         }
@@ -54,6 +57,74 @@ fn run_build(src: &str, out: &str) -> ezim_core::Result<()> {
         buf.len(),
         t.entries.len(),
         format::fnv1a64(&raw_bytes),
+    );
+    Ok(())
+}
+
+/// Build `char-weights.dat` from the MOE 85年常用語詞調查報告 字頻總表 CSV
+/// (Big5-encoded). Columns expected:
+///   字頻序號, 字, 部首, 筆畫, 出現頻次, 累積頻次, 累積百分比
+/// We extract `字` (col 1) and use `字頻序號` (col 0) as the u32 rank.
+fn run_weights(csv_path: &str, out: &str) -> ezim_core::Result<()> {
+    let raw = fs::read(csv_path)?;
+    let (decoded, _, had_errors) = encoding_rs::BIG5.decode(&raw);
+    if had_errors {
+        eprintln!("warning: Big5 decode produced replacement characters");
+    }
+
+    let mut entries: Vec<(char, u32)> = Vec::new();
+    let mut skipped_header = false;
+    let mut bad_lines = 0usize;
+
+    for (lineno, line) in decoded.lines().enumerate() {
+        let line = line.trim();
+        if line.is_empty() {
+            continue;
+        }
+        if !skipped_header {
+            // The header begins with non-digits ("字頻序號"). Detect by
+            // checking whether col 0 parses as a number.
+            let first = line.split(',').next().unwrap_or("");
+            if first.parse::<u32>().is_err() {
+                skipped_header = true;
+                continue;
+            }
+            skipped_header = true; // first data row will be processed below
+        }
+        let cols: Vec<&str> = line.split(',').collect();
+        if cols.len() < 2 {
+            bad_lines += 1;
+            continue;
+        }
+        let rank: u32 = match cols[0].trim().parse() {
+            Ok(n) => n,
+            Err(_) => {
+                bad_lines += 1;
+                eprintln!("line {}: bad rank {:?}", lineno + 1, cols[0]);
+                continue;
+            }
+        };
+        let mut chars = cols[1].trim().chars();
+        let Some(ch) = chars.next() else {
+            bad_lines += 1;
+            continue;
+        };
+        if chars.next().is_some() {
+            // Multi-char in 字 column — unexpected; record only the first.
+            bad_lines += 1;
+        }
+        entries.push((ch, rank));
+    }
+
+    let buf = char_weights::write(&entries, &raw);
+    fs::write(out, &buf)?;
+    println!(
+        "wrote {} ({} bytes, {} entries, {} skipped, source_hash_lo=0x{:016x})",
+        out,
+        buf.len(),
+        entries.len(),
+        bad_lines,
+        format::fnv1a64(&raw),
     );
     Ok(())
 }
