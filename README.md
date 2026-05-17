@@ -72,7 +72,7 @@ bundle exec ruby build_dict.rb
 
 - `dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `dict_concised_2014_20260325.xlsx` 後使用）
 - `ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `ezsource12-3/` 後使用）
-- `85rest01.csv` / `85rest02.csv` — 教育部《八十五年常用語詞調查報告》字頻／詞頻總表，供 `libezim` 建立候選字排序權重
+- `vendor/85rest01.csv` / `vendor/85rest02.csv` — 教育部《八十五年常用語詞調查報告》字頻／詞頻總表，供 `libezim` 建立候選字排序權重
 - `ezphrase.txt` / `gpl.txt` — 輕鬆輸入法大詞庫授權文件
 
 ### 子專案
@@ -89,7 +89,7 @@ bundle exec ruby build_dict.rb
 主要 crate：
 
 - `ezim-core` — 取碼規則、二進位 `.dat` 格式讀寫（mmap、zero-copy）
-- `ezim-table-builder` — 將 `ez.orig-utf8.txt` 編成 `ez.dat`，並以 `85rest01.csv` / `85rest02.csv` 產生 `char-weights.dat` / `phrase-weights.dat`
+- `ezim-table-builder` — 將 `ez.orig-utf8.txt` 編成 `ez.dat`，並以 `vendor/85rest01.csv` / `vendor/85rest02.csv` 產生 `char-weights.dat` / `phrase-weights.dat`
 - `ezim-session` — 編輯緩衝、候選字管理（已整合字頻／詞頻權重排序）
 - `ezim-capi` — 對外公開的 C ABI（標頭檔 `libezim/headers/ezim.h`）
 - `ezim-cli` — 互動式查詢／檢視 `.dat` 的命令列工具
@@ -101,8 +101,8 @@ cd libezim
 cargo build --release
 # 編譯資料檔
 target/release/ezim-table-builder build          ../ezsource12-3/origtable/ez.orig-utf8.txt ez.dat
-target/release/ezim-table-builder weights        ../85rest01.csv char-weights.dat
-target/release/ezim-table-builder phrase-weights ../85rest02.csv phrase-weights.dat
+target/release/ezim-table-builder weights        ../vendor/85rest01.csv char-weights.dat
+target/release/ezim-table-builder phrase-weights ../vendor/85rest02.csv phrase-weights.dat
 ```
 
 ## 維護工作流程
@@ -143,14 +143,14 @@ target/release/ezim-table-builder phrase-weights ../85rest02.csv phrase-weights.
 
 **注意**：CC BY-ND 3.0 TW 授權**禁止改作**。本專案為建立「字詞 → 輕鬆輸入法編碼」對照關係，僅引用原辭典之「字詞名」欄位做為查詢鍵，未改動或重新發布原辭典內容。若您要散布修改後之辭典內容，須另行取得教育部同意。
 
-### 教育部《八十五年常用語詞調查報告》字頻／詞頻總表（`85rest01.csv`、`85rest02.csv`）
+### 教育部《八十五年常用語詞調查報告》字頻／詞頻總表（`vendor/85rest01.csv`、`vendor/85rest02.csv`）
 
 版權所有 © 中華民國教育部（Ministry of Education, R.O.C.）。
 
 來源：[政府資料開放平臺 ── 八十五年常用語詞調查報告](https://data.nat.gov.tw/dataset/45518)。
 
-- `85rest01.csv` ── 字頻總表
-- `85rest02.csv` ── 詞頻總表
+- `vendor/85rest01.csv` ── 字頻總表
+- `vendor/85rest02.csv` ── 詞頻總表
 
 本資料集依政府資料開放平臺之開放資料授權條款公開釋出。引用時請標示：
 
