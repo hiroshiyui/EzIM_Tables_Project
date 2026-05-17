@@ -77,9 +77,12 @@ bundle exec ruby build_dict.rb
 
 ### 子專案
 
-- `libezim/` — Rust 實作的輕鬆輸入法引擎（C ABI），詳見下節
+- `libezim/` — Rust 實作的輕鬆輸入法引擎（C ABI），**開發中、尚未可用於正式環境**，詳見下節
 
 ## libezim — Rust 輕鬆輸入法引擎
+
+> ⚠️ **Work in progress — not production-ready.**
+> 目前仍處於早期開發階段：API、`.dat` 檔格式、C ABI 皆可能變動，尚未發佈穩定版本，也尚未整合進任何 iBus／Fcitx 引擎（見 [`libezim/TODOs.md`](libezim/TODOs.md)）。請勿用於正式環境，僅供開發測試與檢視。
 
 `libezim/` 為一獨立 Cargo workspace，將本專案整理出的編碼表轉成可供 IME 框架（iBus、Fcitx5、TSF 等）嵌入的二進位資料檔與動態函式庫。設計細節見 [`libezim/DESIGN.md`](libezim/DESIGN.md)，待辦事項見 [`libezim/TODOs.md`](libezim/TODOs.md)。
 

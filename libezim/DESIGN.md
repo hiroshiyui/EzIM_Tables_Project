@@ -2,7 +2,7 @@
 
 A Rust implementation of the 輕鬆輸入法 (EZ) input method engine, exposing a stable C ABI so it can be embedded by IME frameworks (IBus, Fcitx5, macOS InputMethodKit, Windows TSF, etc.) and other languages via FFI. Inspired by the architecture of `libchewing`.
 
-Status: **draft for review** — no code yet.
+Status: **draft for review / work in progress** — early development, not production-ready. API, `.dat` format, and C ABI are subject to change without notice; no stable release yet.
 
 ---
 

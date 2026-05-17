@@ -1,5 +1,8 @@
 # libezim TODOs
 
+> ⚠️ **Work in progress — not production-ready.** libezim is in early
+> development; API, `.dat` format, and C ABI may change without notice.
+
 Open follow-ups beyond the design doc's M1–M7 milestones.
 
 - [ ] **Integrate libezim into a real iBus or Fcitx engine.** Build a
