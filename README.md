@@ -118,7 +118,7 @@ target/release/ezim-table-builder phrase-weights ../85rest02.csv phrase-weights.
 
 ## 授權與版權
 
-本專案整合兩項第三方資料，各依其原始授權：
+本專案整合之第三方資料，各依其原始授權：
 
 ### 輕鬆輸入法大詞庫（`ezsource12-3/`）
 
