@@ -2,7 +2,7 @@ require "csv"
 require "set"
 
 EZBIG = "vendor/ezsource12-3/origtable/ezbig.orig-utf8.txt"
-DICT  = "dict.csv"
+DICT  = "data/dict.csv"
 
 existing = Set.new
 File.foreach(EZBIG, encoding: "UTF-8") do |line|

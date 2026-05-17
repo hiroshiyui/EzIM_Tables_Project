@@ -1,6 +1,6 @@
 # 輕鬆輸入法字詞編碼表整理工程
 
-由教育部《國語辭典簡編本》（`vendor/dict_concised_2014_20260325.xlsx`）的「字詞名」欄位，對照輕鬆輸入法原始編碼表（`vendor/ezsource12-3/origtable/`），產生一份完整的「字詞 → 輕鬆輸入法編碼」對映表 `dict.csv`。
+由教育部《國語辭典簡編本》（`vendor/dict_concised_2014_20260325.xlsx`）的「字詞名」欄位，對照輕鬆輸入法原始編碼表（`vendor/ezsource12-3/origtable/`），產生一份完整的「字詞 → 輕鬆輸入法編碼」對映表 `data/dict.csv`。
 
 ## 使用方式
 
@@ -13,7 +13,7 @@ bundle install
 bundle exec ruby build_dict.rb
 ```
 
-產出 `dict.csv`，包含四個欄位：
+產出 `data/dict.csv`，包含四個欄位：
 
 | 欄位 | 說明 |
 | --- | --- |
@@ -54,8 +54,8 @@ bundle exec ruby build_dict.rb
 
 ### 字詞編碼表整理（Ruby）
 
-- `build_dict.rb` — 主要建構腳本：讀取 xlsx 與兩個原始編碼表，產出 `dict.csv`
-- `sync_ezbig.rb` — 維護腳本：將 `dict.csv` 中規則推導出的編碼寫回 `ezbig.orig-utf8.txt`
+- `build_dict.rb` — 主要建構腳本：讀取 xlsx 與兩個原始編碼表，產出 `data/dict.csv`
+- `sync_ezbig.rb` — 維護腳本：將 `data/dict.csv` 中規則推導出的編碼寫回 `ezbig.orig-utf8.txt`
 - `sort_tables.rb` — 維護腳本：依編碼穩定排序 `ez.orig-utf8.txt` 與 `ezbig.orig-utf8.txt`（保留同碼字元的原始順序）
 - `CLAUDE.md` — 取碼規則與缺漏字元推理規則
 - `Gemfile` / `Gemfile.lock` — 依賴（`roo` 讀取 xlsx、`tomlrb` 讀取 toml）
@@ -109,7 +109,7 @@ target/release/ezim-table-builder phrase-weights ../vendor/85rest02.csv phrase-w
 
 當教育部辭典更新或發現新的缺漏字元時，可依下列流程重整資料：
 
-1. 重跑 `bundle exec ruby build_dict.rb`，檢視 `dict.csv` 第三欄（規則推導）與第四欄（查無對映）。
+1. 重跑 `bundle exec ruby build_dict.rb`，檢視 `data/dict.csv` 第三欄（規則推導）與第四欄（查無對映）。
 2. 對於查無對映的字元，依 [`CLAUDE.md`](CLAUDE.md) 的推理流程補入 `vendor/ezsource12-3/origtable/ez.orig-utf8.txt`。
 3. 重跑 `bundle exec ruby build_dict.rb` 確認無未解項。
 4. 執行 `bundle exec ruby sync_ezbig.rb` 將推導結果寫回 `ezbig.orig-utf8.txt`。
@@ -158,4 +158,4 @@ target/release/ezim-table-builder phrase-weights ../vendor/85rest02.csv phrase-w
 
 ### 本專案之整理成果
 
-本專案原創之程式碼（`build_dict.rb`、`sync_ezbig.rb`、`sort_tables.rb`、`make_ez_keyboard.rb`、`make_ez_root_images.rb`、`libezim/` 等）與衍生之 `dict.csv` 同樣以 GNU GPL v2（或更新版本）授權發佈，以與輕鬆輸入法大詞庫之授權相容。完整條款見 [`LICENSE.txt`](LICENSE.txt)。
+本專案原創之程式碼（`build_dict.rb`、`sync_ezbig.rb`、`sort_tables.rb`、`make_ez_keyboard.rb`、`make_ez_root_images.rb`、`libezim/` 等）與衍生之 `data/dict.csv` 同樣以 GNU GPL v2（或更新版本）授權發佈，以與輕鬆輸入法大詞庫之授權相容。完整條款見 [`LICENSE.txt`](LICENSE.txt)。
