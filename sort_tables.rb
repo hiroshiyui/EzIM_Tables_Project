@@ -1,7 +1,7 @@
 require "set"
 
-EZ    = "ezsource12-3/origtable/ez.orig-utf8.txt"
-EZBIG = "ezsource12-3/origtable/ezbig.orig-utf8.txt"
+EZ    = "vendor/ezsource12-3/origtable/ez.orig-utf8.txt"
+EZBIG = "vendor/ezsource12-3/origtable/ezbig.orig-utf8.txt"
 
 def stable_sort_by_code(lines)
   lines.each_with_index.sort_by { |line, i| [line.split("\t", 2).first, i] }.map(&:first)

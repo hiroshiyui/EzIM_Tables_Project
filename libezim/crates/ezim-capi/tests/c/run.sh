@@ -5,7 +5,7 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 WORKSPACE="$(cd "$HERE/../../../.." && pwd)"
-SRC_TABLE="$WORKSPACE/../ezsource12-3/origtable/ez.orig-utf8.txt"
+SRC_TABLE="$WORKSPACE/../vendor/ezsource12-3/origtable/ez.orig-utf8.txt"
 
 cd "$WORKSPACE"
 

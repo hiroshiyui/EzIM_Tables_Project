@@ -2,8 +2,8 @@ require "roo"
 require "csv"
 
 XLSX     = "vendor/dict_concised_2014_20260325.xlsx"
-SRC_BIG  = "ezsource12-3/origtable/ezbig.orig-utf8.txt"
-SRC_ORIG = "ezsource12-3/origtable/ez.orig-utf8.txt"
+SRC_BIG  = "vendor/ezsource12-3/origtable/ezbig.orig-utf8.txt"
+SRC_ORIG = "vendor/ezsource12-3/origtable/ez.orig-utf8.txt"
 OUT      = "dict.csv"
 
 word_codes = Hash.new { |h, k| h[k] = [] }

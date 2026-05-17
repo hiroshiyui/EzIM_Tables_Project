@@ -272,7 +272,7 @@ ezsmall.orig-utf8.txt ┘
 ```
 
 - The builder is invoked manually (or via `cargo xtask build-tables`). Output `.dat` files are not checked in; instead a Make target / CI step regenerates them, and a checksum is recorded in the crate.
-- Source files live at `ezsource12-3/origtable/` (existing). The builder accepts `--source <path>` and `--out <path>`.
+- Source files live at `vendor/ezsource12-3/origtable/` (existing). The builder accepts `--source <path>` and `--out <path>`.
 - The text format parsed: `code\tstring\n` (verified — see `head` of `ez.orig-utf8.txt`). Lines are processed in file order; that order is preserved in the char-index for rule #3.
 
 ---

@@ -1,7 +1,7 @@
 require "csv"
 require "set"
 
-EZBIG = "ezsource12-3/origtable/ezbig.orig-utf8.txt"
+EZBIG = "vendor/ezsource12-3/origtable/ezbig.orig-utf8.txt"
 DICT  = "dict.csv"
 
 existing = Set.new

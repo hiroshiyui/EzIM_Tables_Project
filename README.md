@@ -1,6 +1,6 @@
 # 輕鬆輸入法字詞編碼表整理工程
 
-由教育部《國語辭典簡編本》（`vendor/dict_concised_2014_20260325.xlsx`）的「字詞名」欄位，對照輕鬆輸入法原始編碼表（`ezsource12-3/origtable/`），產生一份完整的「字詞 → 輕鬆輸入法編碼」對映表 `dict.csv`。
+由教育部《國語辭典簡編本》（`vendor/dict_concised_2014_20260325.xlsx`）的「字詞名」欄位，對照輕鬆輸入法原始編碼表（`vendor/ezsource12-3/origtable/`），產生一份完整的「字詞 → 輕鬆輸入法編碼」對映表 `dict.csv`。
 
 ## 使用方式
 
@@ -8,7 +8,7 @@
 
 ```sh
 unzip -d vendor vendor/dict_concised_2014_20260325.zip
-unzip -d ezsource12-3 ezsource12-3.zip
+unzip -d vendor/ezsource12-3 vendor/ezsource12-3.zip
 bundle install
 bundle exec ruby build_dict.rb
 ```
@@ -71,7 +71,7 @@ bundle exec ruby build_dict.rb
 ### 資料檔
 
 - `vendor/dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `vendor/dict_concised_2014_20260325.xlsx` 後使用）
-- `ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `ezsource12-3/` 後使用）
+- `vendor/ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `vendor/ezsource12-3/` 後使用）
 - `vendor/85rest01.csv` / `vendor/85rest02.csv` — 教育部《八十五年常用語詞調查報告》字頻／詞頻總表，供 `libezim` 建立候選字排序權重
 - `ezphrase.txt` / `gpl.txt` — 輕鬆輸入法大詞庫授權文件
 
@@ -100,7 +100,7 @@ bundle exec ruby build_dict.rb
 cd libezim
 cargo build --release
 # 編譯資料檔
-target/release/ezim-table-builder build          ../ezsource12-3/origtable/ez.orig-utf8.txt ez.dat
+target/release/ezim-table-builder build          ../vendor/ezsource12-3/origtable/ez.orig-utf8.txt ez.dat
 target/release/ezim-table-builder weights        ../vendor/85rest01.csv char-weights.dat
 target/release/ezim-table-builder phrase-weights ../vendor/85rest02.csv phrase-weights.dat
 ```
@@ -110,17 +110,17 @@ target/release/ezim-table-builder phrase-weights ../vendor/85rest02.csv phrase-w
 當教育部辭典更新或發現新的缺漏字元時，可依下列流程重整資料：
 
 1. 重跑 `bundle exec ruby build_dict.rb`，檢視 `dict.csv` 第三欄（規則推導）與第四欄（查無對映）。
-2. 對於查無對映的字元，依 [`CLAUDE.md`](CLAUDE.md) 的推理流程補入 `ezsource12-3/origtable/ez.orig-utf8.txt`。
+2. 對於查無對映的字元，依 [`CLAUDE.md`](CLAUDE.md) 的推理流程補入 `vendor/ezsource12-3/origtable/ez.orig-utf8.txt`。
 3. 重跑 `bundle exec ruby build_dict.rb` 確認無未解項。
 4. 執行 `bundle exec ruby sync_ezbig.rb` 將推導結果寫回 `ezbig.orig-utf8.txt`。
 5. （可選）執行 `bundle exec ruby sort_tables.rb` 重新分組同碼字元。
-6. 將更新後的兩個原始編碼表重新打包進 `ezsource12-3.zip`：`(cd ezsource12-3 && zip ../ezsource12-3.zip origtable/ez.orig-utf8.txt origtable/ezbig.orig-utf8.txt)`
+6. 將更新後的兩個原始編碼表重新打包進 `vendor/ezsource12-3.zip`：`(cd vendor/ezsource12-3 && zip ../ezsource12-3.zip origtable/ez.orig-utf8.txt origtable/ezbig.orig-utf8.txt)`
 
 ## 授權與版權
 
 本專案整合之第三方資料，各依其原始授權：
 
-### 輕鬆輸入法大詞庫（`ezsource12-3/`）
+### 輕鬆輸入法大詞庫（`vendor/ezsource12-3/`）
 
 版權所有 © 1999 輕鬆資訊企業社（統一編號：70942237，負責人：高衡緒）。
 

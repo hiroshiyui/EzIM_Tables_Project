@@ -1,7 +1,7 @@
 # EZ Roots SVG Image Definitions
 #
 # Each EZ key may carry MULTIPLE roots (字根).
-# Primary root  : from ezsource12-3/header/gcin_ez_header.txt (%keyname).
+# Primary root  : from vendor/ezsource12-3/header/gcin_ez_header.txt (%keyname).
 # Secondary root: from the 輕鬆鍵盤圖 keyboard diagram
 #                 (reference image: Documents/ezIME/IMG_20110203_211918.jpg).
 #
@@ -51,7 +51,7 @@
 #                                   outer group).
 
 [meta]
-primary_source   = "ezsource12-3/header/gcin_ez_header.txt"
+primary_source   = "vendor/ezsource12-3/header/gcin_ez_header.txt"
 secondary_source = "輕鬆鍵盤圖 diagram (IMG_20110203_211918.jpg)"
 svg_source       = "vendor/makemeahanzi/svgs"
 svg_naming       = "decimal-codepoint.svg (e.g. U+4E00 一 -> 19968.svg)"

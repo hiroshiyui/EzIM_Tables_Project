@@ -25,7 +25,7 @@
 
 ## 缺漏字元編碼推理規則
 
-當編碼表內查無某字元時，依下列流程推理可能編碼，並可加入 `ezsource12-3/origtable/ez.orig-utf8.txt`：
+當編碼表內查無某字元時，依下列流程推理可能編碼，並可加入 `vendor/ezsource12-3/origtable/ez.orig-utf8.txt`：
 
 ### 推理流程
 
