@@ -291,7 +291,7 @@ A separate `ezim-author` tool (later, optional) could scaffold this as an intera
    - Picker: every example in CLAUDE.md (`一→m`, `七→j'`, `八→8`, `公→8/`) as a parametrised test.
    - End-to-end: `「八一七公報」 → "8mj8"` exactly as documented.
 2. **Round-trip fuzzing**: sample N strings from the table, encode them, assert the encoded form prefix-matches a candidate that includes the original.
-3. **Golden file**: snapshot encodings of the first 1000 phrases in `ezphrase.txt` (after license-text skip).
+3. **Golden file**: snapshot encodings of the first 1000 phrases in `vendor/ezphrase.txt` (after license-text skip).
 4. **C ABI smoke test**: a tiny `.c` program in `crates/ezim-capi/tests/c/smoke.c` compiled in CI with both gcc and clang, linking against the cdylib.
 5. **Cross-language sanity**: a Python `ctypes` script in `examples/` to catch ABI accidents early.
 

@@ -73,7 +73,7 @@ bundle exec ruby build_dict.rb
 - `vendor/dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `vendor/dict_concised_2014_20260325.xlsx` 後使用）
 - `vendor/ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `vendor/ezsource12-3/` 後使用）
 - `vendor/85rest01.csv` / `vendor/85rest02.csv` — 教育部《八十五年常用語詞調查報告》字頻／詞頻總表，供 `libezim` 建立候選字排序權重
-- `ezphrase.txt` / `gpl.txt` — 輕鬆輸入法大詞庫授權文件
+- `vendor/ezphrase.txt` / `vendor/gpl.txt` — 輕鬆輸入法大詞庫授權文件
 
 ### 子專案
 
@@ -124,10 +124,10 @@ target/release/ezim-table-builder phrase-weights ../vendor/85rest02.csv phrase-w
 
 版權所有 © 1999 輕鬆資訊企業社（統一編號：70942237，負責人：高衡緒）。
 
-依《輕鬆資訊「輕鬆輸入法大詞庫」公眾授權書》v1.0（1999-10-23 公布）發佈，標的物軟體同時遵照 [GNU General Public License v2](gpl.txt) 或更新版本之條款重製、修改與散布。完整授權條款請見：
+依《輕鬆資訊「輕鬆輸入法大詞庫」公眾授權書》v1.0（1999-10-23 公布）發佈，標的物軟體同時遵照 [GNU General Public License v2](vendor/gpl.txt) 或更新版本之條款重製、修改與散布。完整授權條款請見：
 
-- [`ezphrase.txt`](ezphrase.txt) — 輕鬆資訊公眾授權書
-- [`gpl.txt`](gpl.txt) — GNU GPL v2
+- [`vendor/ezphrase.txt`](vendor/ezphrase.txt) — 輕鬆資訊公眾授權書
+- [`vendor/gpl.txt`](vendor/gpl.txt) — GNU GPL v2
 
 ### 教育部《國語辭典簡編本》
 
