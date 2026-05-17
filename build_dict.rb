@@ -1,7 +1,7 @@
 require "roo"
 require "csv"
 
-XLSX     = "dict_concised_2014_20260325.xlsx"
+XLSX     = "vendor/dict_concised_2014_20260325.xlsx"
 SRC_BIG  = "ezsource12-3/origtable/ezbig.orig-utf8.txt"
 SRC_ORIG = "ezsource12-3/origtable/ez.orig-utf8.txt"
 OUT      = "dict.csv"

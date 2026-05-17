@@ -1,13 +1,13 @@
 # 輕鬆輸入法字詞編碼表整理工程
 
-由教育部《國語辭典簡編本》（`dict_concised_2014_20260325.xlsx`）的「字詞名」欄位，對照輕鬆輸入法原始編碼表（`ezsource12-3/origtable/`），產生一份完整的「字詞 → 輕鬆輸入法編碼」對映表 `dict.csv`。
+由教育部《國語辭典簡編本》（`vendor/dict_concised_2014_20260325.xlsx`）的「字詞名」欄位，對照輕鬆輸入法原始編碼表（`ezsource12-3/origtable/`），產生一份完整的「字詞 → 輕鬆輸入法編碼」對映表 `dict.csv`。
 
 ## 使用方式
 
 教育部辭典與輕鬆輸入法原始編碼表皆以壓縮檔形式收錄，執行前請先解壓縮。注意 `ezsource12-3.zip` 內部並無 `ezsource12-3/` 頂層目錄，需透過 `-d` 指定解壓縮目標目錄：
 
 ```sh
-unzip dict_concised_2014_20260325.zip
+unzip -d vendor vendor/dict_concised_2014_20260325.zip
 unzip -d ezsource12-3 ezsource12-3.zip
 bundle install
 bundle exec ruby build_dict.rb
@@ -70,7 +70,7 @@ bundle exec ruby build_dict.rb
 
 ### 資料檔
 
-- `dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `dict_concised_2014_20260325.xlsx` 後使用）
+- `vendor/dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `vendor/dict_concised_2014_20260325.xlsx` 後使用）
 - `ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `ezsource12-3/` 後使用）
 - `vendor/85rest01.csv` / `vendor/85rest02.csv` — 教育部《八十五年常用語詞調查報告》字頻／詞頻總表，供 `libezim` 建立候選字排序權重
 - `ezphrase.txt` / `gpl.txt` — 輕鬆輸入法大詞庫授權文件
