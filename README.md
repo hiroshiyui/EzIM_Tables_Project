@@ -52,15 +52,55 @@ bundle exec ruby build_dict.rb
 
 ## 檔案
 
+### 字詞編碼表整理（Ruby）
+
 - `build_dict.rb` — 主要建構腳本：讀取 xlsx 與兩個原始編碼表，產出 `dict.csv`
 - `sync_ezbig.rb` — 維護腳本：將 `dict.csv` 中規則推導出的編碼寫回 `ezbig.orig-utf8.txt`
 - `sort_tables.rb` — 維護腳本：依編碼穩定排序 `ez.orig-utf8.txt` 與 `ezbig.orig-utf8.txt`（保留同碼字元的原始順序）
 - `CLAUDE.md` — 取碼規則與缺漏字元推理規則
-- `Gemfile` / `Gemfile.lock` — 依賴（`roo` 讀取 xlsx）
+- `Gemfile` / `Gemfile.lock` — 依賴（`roo` 讀取 xlsx、`tomlrb` 讀取 toml）
 - `.ruby-version` / `.ruby-gemset` — rvm 設定
+
+### 鍵盤與字根圖（Ruby + SVG）
+
+- `make_ez_root_images.rb` — 依 `roots_image_definition.toml` 自 `makemeahanzi/` 子模組擷取／合成字根 SVG，輸出至 `ez_root_images/`
+- `make_ez_keyboard.rb` — 將 `ez_root_images/` 套入 `qwerty_keyboard_template.svg`，產生標註字根的 `ez_keyboard.svg` 與 `ez_keyboard_plain.svg`
+- `roots_image_definition.toml` — 每鍵字根定義（direct / fallback / descriptive / missing）
+- `makemeahanzi/` — git 子模組，提供漢字筆畫 SVG 來源（執行前請 `git submodule update --init`）
+
+### 資料檔
+
 - `dict_concised_2014_20260325.zip` — 教育部《國語辭典簡編本》壓縮檔（需解壓縮出 `dict_concised_2014_20260325.xlsx` 後使用）
 - `ezsource12-3.zip` — 輕鬆輸入法原始編碼表壓縮檔（需解壓縮為 `ezsource12-3/` 後使用）
+- `85rest01.csv` / `85rest02.csv` — 教育部《八十五年常用語詞調查報告》字頻／詞頻總表，供 `libezim` 建立候選字排序權重
 - `ezphrase.txt` / `gpl.txt` — 輕鬆輸入法大詞庫授權文件
+
+### 子專案
+
+- `libezim/` — Rust 實作的輕鬆輸入法引擎（C ABI），詳見下節
+
+## libezim — Rust 輕鬆輸入法引擎
+
+`libezim/` 為一獨立 Cargo workspace，將本專案整理出的編碼表轉成可供 IME 框架（iBus、Fcitx5、TSF 等）嵌入的二進位資料檔與動態函式庫。設計細節見 [`libezim/DESIGN.md`](libezim/DESIGN.md)，待辦事項見 [`libezim/TODOs.md`](libezim/TODOs.md)。
+
+主要 crate：
+
+- `ezim-core` — 取碼規則、二進位 `.dat` 格式讀寫（mmap、zero-copy）
+- `ezim-table-builder` — 將 `ez.orig-utf8.txt` 編成 `ez.dat`，並以 `85rest01.csv` / `85rest02.csv` 產生 `char-weights.dat` / `phrase-weights.dat`
+- `ezim-session` — 編輯緩衝、候選字管理（已整合字頻／詞頻權重排序）
+- `ezim-capi` — 對外公開的 C ABI（標頭檔 `libezim/headers/ezim.h`）
+- `ezim-cli` — 互動式查詢／檢視 `.dat` 的命令列工具
+
+典型流程：
+
+```sh
+cd libezim
+cargo build --release
+# 編譯資料檔
+target/release/ezim-table-builder build          ../ezsource12-3/origtable/ez.orig-utf8.txt ez.dat
+target/release/ezim-table-builder weights        ../85rest01.csv char-weights.dat
+target/release/ezim-table-builder phrase-weights ../85rest02.csv phrase-weights.dat
+```
 
 ## 維護工作流程
 
