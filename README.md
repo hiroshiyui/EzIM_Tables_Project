@@ -158,4 +158,4 @@ target/release/ezim-table-builder phrase-weights ../vendor/85rest02.csv phrase-w
 
 ### 本專案之整理成果
 
-`build_dict.rb`、`sync_ezbig.rb`、`sort_tables.rb` 與衍生之 `dict.csv` 同樣以 GNU GPL v2（或更新版本）授權發佈，以與輕鬆輸入法大詞庫之授權相容。
+本專案原創之程式碼（`build_dict.rb`、`sync_ezbig.rb`、`sort_tables.rb`、`make_ez_keyboard.rb`、`make_ez_root_images.rb`、`libezim/` 等）與衍生之 `dict.csv` 同樣以 GNU GPL v2（或更新版本）授權發佈，以與輕鬆輸入法大詞庫之授權相容。完整條款見 [`LICENSE.txt`](LICENSE.txt)。
