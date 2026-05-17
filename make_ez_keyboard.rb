@@ -16,7 +16,7 @@ require "fileutils"
 require "tomlrb"
 
 ROOT          = File.expand_path(__dir__)
-DEF_FILE      = File.join(ROOT, "roots_image_definition.toml")
+DEF_FILE      = File.join(ROOT, "data", "roots_image_definition.toml")
 OUT_DIR        = File.join(ROOT, "ez_keyboard_images")
 OUT_FILE       = File.join(OUT_DIR, "ez_keyboard.svg")
 OUT_FILE_PLAIN = File.join(OUT_DIR, "ez_keyboard_plain.svg")

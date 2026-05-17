@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Read roots_image_definition.toml and generate one SVG per root under
+# Read data/roots_image_definition.toml and generate one SVG per root under
 # ez_root_images/.
 #
 # Each root is rendered on the makemeahanzi 1024×1024 canvas with its
@@ -24,7 +24,7 @@ require "tomlrb"
 require "fileutils"
 
 ROOT        = File.expand_path(__dir__)
-DEF_FILE    = File.join(ROOT, "roots_image_definition.toml")
+DEF_FILE    = File.join(ROOT, "data", "roots_image_definition.toml")
 SVG_SRC_DIR = File.join(ROOT, "vendor", "makemeahanzi", "svgs")
 OUT_DIR     = File.join(ROOT, "ez_root_images")
 

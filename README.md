@@ -63,9 +63,9 @@ bundle exec ruby build_dict.rb
 
 ### 鍵盤與字根圖（Ruby + SVG）
 
-- `make_ez_root_images.rb` — 依 `roots_image_definition.toml` 自 `vendor/makemeahanzi/` 子模組擷取／合成字根 SVG，輸出至 `ez_root_images/`
+- `make_ez_root_images.rb` — 依 `data/roots_image_definition.toml` 自 `vendor/makemeahanzi/` 子模組擷取／合成字根 SVG，輸出至 `ez_root_images/`
 - `make_ez_keyboard.rb` — 將 `ez_root_images/` 套入 `ez_keyboard_images/qwerty_keyboard_template.svg`，產生標註字根的 `ez_keyboard_images/ez_keyboard.svg` 與 `ez_keyboard_images/ez_keyboard_plain.svg`
-- `roots_image_definition.toml` — 每鍵字根定義（direct / fallback / descriptive / missing）
+- `data/roots_image_definition.toml` — 每鍵字根定義（direct / fallback / descriptive / missing）
 - `vendor/makemeahanzi/` — git 子模組，提供漢字筆畫 SVG 來源（執行前請 `git submodule update --init`）
 
 ### 資料檔
