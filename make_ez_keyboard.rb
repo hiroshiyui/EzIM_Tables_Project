@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Build ez_keyboard.svg by combining the QWERTY layout from
+# Build ez_keyboard_images/ez_keyboard.svg by combining the QWERTY layout from
 # qwerty_keyboard_template.svg with the root images generated under
 # ez_root_images/.
 #
@@ -12,12 +12,14 @@
 # keep their original labels unchanged.
 
 require "bundler/setup"
+require "fileutils"
 require "tomlrb"
 
 ROOT          = File.expand_path(__dir__)
 DEF_FILE      = File.join(ROOT, "roots_image_definition.toml")
-OUT_FILE       = File.join(ROOT, "ez_keyboard.svg")
-OUT_FILE_PLAIN = File.join(ROOT, "ez_keyboard_plain.svg")
+OUT_DIR        = File.join(ROOT, "ez_keyboard_images")
+OUT_FILE       = File.join(OUT_DIR, "ez_keyboard.svg")
+OUT_FILE_PLAIN = File.join(OUT_DIR, "ez_keyboard_plain.svg")
 ROOT_IMG_DIR   = "ez_root_images" # path embedded into the SVG, relative to it
 KEYS_OUT_DIR   = File.join(ROOT, "ez_root_images", "keys")
 
@@ -370,6 +372,7 @@ def main
   total_keys = ROWS.flatten(1).size
   total_roots = roots_map.values.sum(&:size)
 
+  FileUtils.mkdir_p(OUT_DIR)
   [
     [OUT_FILE,       false, "bordered"],
     [OUT_FILE_PLAIN, true,  "plain (no border, no rounded corners)"],
