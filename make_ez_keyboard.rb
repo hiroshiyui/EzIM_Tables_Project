@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 # Build ez_keyboard_images/ez_keyboard.svg by combining the QWERTY layout from
-# qwerty_keyboard_template.svg with the root images generated under
+# ez_keyboard_images/qwerty_keyboard_template.svg with the root images generated under
 # ez_root_images/.
 #
 # For each printable key with one or more EZ roots, the alphanumeric
