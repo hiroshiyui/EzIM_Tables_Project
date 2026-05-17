@@ -53,7 +53,7 @@
 [meta]
 primary_source   = "ezsource12-3/header/gcin_ez_header.txt"
 secondary_source = "輕鬆鍵盤圖 diagram (IMG_20110203_211918.jpg)"
-svg_source       = "makemeahanzi/svgs"
+svg_source       = "vendor/makemeahanzi/svgs"
 svg_naming       = "decimal-codepoint.svg (e.g. U+4E00 一 -> 19968.svg)"
 
 # ============================================================

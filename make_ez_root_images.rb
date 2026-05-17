@@ -25,7 +25,7 @@ require "fileutils"
 
 ROOT        = File.expand_path(__dir__)
 DEF_FILE    = File.join(ROOT, "roots_image_definition.toml")
-SVG_SRC_DIR = File.join(ROOT, "makemeahanzi", "svgs")
+SVG_SRC_DIR = File.join(ROOT, "vendor", "makemeahanzi", "svgs")
 OUT_DIR     = File.join(ROOT, "ez_root_images")
 
 SVG_HEADER = <<~HEAD
