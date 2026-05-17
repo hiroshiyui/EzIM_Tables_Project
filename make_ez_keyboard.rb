@@ -161,14 +161,28 @@ def render_key(keycode, label, width_units, is_mod, roots, x_off, y_off, plain: 
     # Top region: centred alphanumeric label
     parts << %(  <text class="key-label" x="#{body_w / 2.0}" y="#{LABEL_REGION_H / 2.0}">#{escape_text(label)}</text>)
 
-    # Bottom region: roots, each filling its cell non-uniformly
+    # Bottom region: roots, each filling its cell non-uniformly.
+    # Paths are inlined (not referenced via <image>) so the composite
+    # SVG renders standalone in browsers / GitHub raw view, which block
+    # cross-file SVG references.
     roots_y = LABEL_REGION_H + REGION_GAP
     roots_h = body_h - roots_y
     n = roots.size
     cell_w = body_w.to_f / n
+    sx = cell_w / 1024.0
+    sy = roots_h.to_f / 1024.0
     roots.each_with_index do |fname, i|
       x = (cell_w * i).round(3)
-      parts << %(  <image href="#{ROOT_IMG_DIR}/#{fname}" x="#{x}" y="#{roots_y}" width="#{cell_w.round(3)}" height="#{roots_h}" preserveAspectRatio="none"/>)
+      inner = extract_root_inner_paths(File.join(ROOT, ROOT_IMG_DIR, fname))
+      unless inner
+        warn "[skip] could not extract paths from #{fname}"
+        next
+      end
+      parts << %(  <g transform="translate(#{x},#{roots_y}) scale(#{sx.round(6)},#{sy.round(6)})">)
+      parts << %(    <g transform="scale(1, -1) translate(0, -900)">)
+      parts << "      #{inner}"
+      parts << %(    </g>)
+      parts << %(  </g>)
     end
   else
     # No EZ roots defined for this key — show the label centred.
